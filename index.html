@@ -1,0 +1,3412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muhammad Abdullah | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600;700&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --primary-bg: #0a0f18;
+        --secondary-bg: #101827;
+        --accent-color: #00ff9c;
+        --accent-color-rgb: 0, 255, 156;
+        --text-color: #cdd6f4;
+        --text-secondary-color: #a6adc8;
+        --border-color: #313a50;
+        --font-primary: "Roboto", sans-serif;
+        --font-secondary: "Source Code Pro", monospace;
+        --font-title: "VT323", monospace;
+      }
+
+      body {
+        background-color: var(--primary-bg);
+        color: var(--text-color);
+        font-family: var(--font-primary);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--secondary-bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--accent-color);
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #00e68a;
+        box-shadow: 0 0 8px rgba(var(--accent-color-rgb), 0.7);
+      }
+
+      .hacker-terminal {
+        font-family: var(--font-secondary);
+        color: var(--accent-color);
+        text-shadow: 0 0 3px rgba(var(--accent-color-rgb), 0.5);
+      }
+      .title-font {
+        font-family: var(--font-title);
+      }
+
+      header {
+        background-color: rgba(16, 24, 39, 0.85);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      nav #desktop-nav {
+        display: flex;
+      }
+      nav #desktop-nav a {
+        font-family: var(--font-secondary);
+        transition:
+          color 0.3s ease,
+          text-shadow 0.3s ease,
+          background-color 0.3s ease;
+        padding: 10px 15px;
+        border-radius: 4px;
+        position: relative;
+        font-size: 0.95rem;
+      }
+      nav #desktop-nav a::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background-color: var(--accent-color);
+        transition: width 0.3s ease-in-out;
+        box-shadow: 0 0 8px rgba(var(--accent-color-rgb), 0.7);
+      }
+      nav #desktop-nav a:hover::before,
+      nav #desktop-nav a.active::before {
+        width: 70%;
+      }
+      nav #desktop-nav a:hover,
+      nav #desktop-nav a.active {
+        color: var(--accent-color);
+        background-color: rgba(var(--accent-color-rgb), 0.08);
+        text-shadow:
+          0 0 8px rgba(var(--accent-color-rgb), 0.7),
+          0 0 15px rgba(var(--accent-color-rgb), 0.5);
+      }
+
+      #hamburger-icon {
+        display: none;
+        cursor: pointer;
+        z-index: 10001;
+      }
+      #hamburger-icon div {
+        width: 30px;
+        height: 3px;
+        background-color: var(--accent-color);
+        margin: 6px 0;
+        transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        border-radius: 1px;
+        box-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
+      }
+      #hamburger-icon.open .bar1 {
+        transform: rotate(-45deg) translate(-7px, 6px);
+      }
+      #hamburger-icon.open .bar2 {
+        opacity: 0;
+      }
+      #hamburger-icon.open .bar3 {
+        transform: rotate(45deg) translate(-7px, -6px);
+      }
+
+      #mobile-nav-panel {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background-color: rgba(10, 15, 24, 0.97);
+        backdrop-filter: blur(8px);
+        padding-top: 80px;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+        transition: right 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        z-index: 10000;
+        overflow-y: auto;
+      }
+      #mobile-nav-panel.open {
+        right: 0;
+      }
+      #mobile-nav-panel ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+      }
+      #mobile-nav-panel li a {
+        display: block;
+        padding: 15px 20px;
+        color: var(--text-color);
+        font-family: var(--font-secondary);
+        font-size: 1.2em;
+        text-decoration: none;
+        transition:
+          background-color 0.3s,
+          color 0.3s,
+          letter-spacing 0.3s;
+        border-bottom: 1px solid var(--border-color);
+      }
+      #mobile-nav-panel li:last-child a {
+        border-bottom: none;
+      }
+      #mobile-nav-panel li a:hover,
+      #mobile-nav-panel li a.active {
+        background-color: rgba(var(--accent-color-rgb), 0.15);
+        color: var(--accent-color);
+        letter-spacing: 2px;
+        text-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.7);
+      }
+
+      .content-section {
+        position: relative;
+        min-height: calc(100vh - 200px);
+        padding: 2.5rem 1.5rem;
+        border: 1px solid var(--border-color);
+        background-color: var(--secondary-bg);
+        border-radius: 10px;
+        box-shadow:
+          0 0 25px rgba(var(--accent-color-rgb), 0.07),
+          inset 0 0 20px rgba(0, 0, 0, 0.35);
+        animation: contentFadeIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        margin-bottom: 2.5rem;
+      }
+      @keyframes contentFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(15px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .skill-item,
+      .project-card,
+      .service-item,
+      .timeline-item-content,
+      .featured-skill-box,
+      .key-metric-box,
+      .approach-step-box {
+        background-color: var(--primary-bg);
+        border: 1px solid var(--border-color);
+        transition:
+          transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+          box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        border-radius: 8px;
+      }
+      .skill-item:hover,
+      .project-card:hover,
+      .service-item:hover,
+      .timeline-item-content:hover,
+      .featured-skill-box:hover,
+      .key-metric-box:hover,
+      .approach-step-box:hover {
+        transform: translateY(-7px) scale(1.03);
+        box-shadow: 0 0 25px rgba(var(--accent-color-rgb), 0.45);
+      }
+
+      .project-card {
+        display: flex;
+        flex-direction: column;
+      }
+      .project-card img {
+        height: 220px;
+        object-fit: cover;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+      .project-card .p-6 {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .loader-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(10, 15, 24, 0.98);
+        z-index: 10002;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.05s ease-out,
+          visibility 0.05s ease-out;
+      }
+      .loader-overlay.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+      .loader-word {
+        color: #fff;
+        font-size: clamp(1.8em, 5.5vw, 2.8em);
+        font-family: var(--font-secondary);
+        text-shadow:
+          0 0 12px rgba(var(--accent-color-rgb), 0.8),
+          0 0 8px rgba(var(--accent-color-rgb), 0.6);
+        position: relative;
+      }
+      .loader-word .dud {
+        opacity: 0.5;
+        color: var(--text-secondary-color);
+      }
+
+      .scanline-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background-image: linear-gradient(
+          transparent 50%,
+          rgba(0, 25, 10, 0.08) 50%
+        );
+        background-size: 100% 2px;
+        animation: scanlines 30s linear infinite;
+        z-index: -1;
+      }
+      @keyframes scanlines {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 0 100vh;
+        }
+      }
+
+      #matrix-rain-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        opacity: 0.06;
+        pointer-events: none;
+      }
+
+      .btn {
+        font-family: var(--font-secondary);
+        padding: 12px 24px;
+        border-radius: 6px;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        border: none;
+        cursor: pointer;
+        display: inline-block;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+      }
+      .btn::after {
+        /* Enhanced Glow effect for buttons */
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background-image: radial-gradient(
+          circle,
+          rgba(var(--accent-color-rgb), 0.25) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        transition:
+          transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+          opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .btn:hover::after {
+        transform: translate(-50%, -50%) scale(3); /* Adjust scale for desired glow size */
+        opacity: 1;
+      }
+      .btn > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .btn-primary {
+        background-color: var(--accent-color);
+        color: var(--primary-bg);
+        text-shadow: none;
+      }
+      .btn-primary:hover {
+        background-color: #00e68a;
+        transform: translateY(-4px) scale(1.02);
+        box-shadow:
+          0 8px 15px rgba(var(--accent-color-rgb), 0.4),
+          0 0 20px rgba(var(--accent-color-rgb), 0.3);
+      }
+      .btn-outline {
+        background-color: transparent;
+        color: var(--accent-color);
+        border: 2px solid var(--accent-color);
+      }
+      .btn-outline:hover {
+        background-color: var(--accent-color);
+        color: var(--primary-bg);
+        transform: translateY(-4px) scale(1.02);
+        box-shadow:
+          0 8px 15px rgba(var(--accent-color-rgb), 0.3),
+          0 0 20px rgba(var(--accent-color-rgb), 0.2);
+      }
+      .btn.disabled {
+        background-color: var(--border-color);
+        color: var(--text-secondary-color);
+        cursor: not-allowed;
+        box-shadow: none;
+        transform: none;
+        opacity: 0.7;
+      }
+      .btn.disabled:hover {
+        background-color: var(--border-color);
+        box-shadow: none;
+      }
+      .btn.disabled::after {
+        display: none;
+      }
+
+      footer {
+        background-color: var(--secondary-bg);
+        border-top: 1px solid var(--border-color);
+        padding: 2rem 0;
+      }
+
+      .section-title {
+        font-family: var(--font-title);
+        color: var(--accent-color);
+        font-size: clamp(2.6rem, 6.5vw, 3.8rem);
+        line-height: 1.25;
+        letter-spacing: 1px;
+        margin-bottom: 3rem;
+        text-align: center;
+        position: relative;
+        padding-bottom: 1.25rem;
+        text-shadow:
+          0 0 8px rgba(var(--accent-color-rgb), 0.5),
+          0 0 15px rgba(var(--accent-color-rgb), 0.3);
+      }
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 140px;
+        height: 4px;
+        background-color: var(--accent-color);
+        border-radius: 2px;
+        box-shadow: 0 0 12px rgba(var(--accent-color-rgb), 0.8);
+      }
+
+      #home-section .hero-title-main {
+        font-family: var(--font-primary);
+        font-weight: 700;
+        color: var(--text-color);
+        font-size: clamp(2.2rem, 8vw, 4.2rem);
+        line-height: 1.1;
+        margin-bottom: 0.75rem;
+      }
+      #home-section .hero-title-hacker {
+        font-family: var(--font-title);
+        color: var(--accent-color);
+        font-size: clamp(2rem, 7vw, 3.5rem);
+        margin-bottom: 1.5rem;
+        display: block;
+        letter-spacing: 1px;
+      }
+      #home-section .hero-subtitle {
+        font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+        letter-spacing: 0.5px;
+      }
+
+      #projectModal {
+        transition:
+          opacity 0.25s ease-in-out,
+          visibility 0.25s ease-in-out;
+      }
+      #projectModal.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      #modalInnerContent {
+        transition:
+          transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+          opacity 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        opacity: 0;
+        transform: translateY(15px) scale(0.97);
+      }
+      #projectModal.active #modalInnerContent {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      #modalImage {
+        border: 2px solid var(--border-color);
+      }
+      #modalDescriptionContainer::-webkit-scrollbar {
+        width: 6px;
+      }
+      #modalDescriptionContainer::-webkit-scrollbar-thumb {
+        background: var(--accent-color);
+      }
+
+      .interactive-glow-box {
+        position: relative;
+        overflow: hidden;
+        perspective: 1000px;
+      }
+      .interactive-glow-box::before {
+        content: "";
+        position: absolute;
+        left: var(--mouse-x, 50%);
+        top: var(--mouse-y, 50%);
+        width: 0px;
+        height: 0px;
+        background-image: radial-gradient(
+          circle,
+          rgba(var(--accent-color-rgb), 0.12) 0%,
+          rgba(var(--accent-color-rgb), 0) 60%
+        );
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.3s ease-out,
+          height 0.3s ease-out,
+          opacity 0.3s ease-out;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .interactive-glow-box:hover::before {
+        width: 250px;
+        height: 250px;
+        opacity: 0.6;
+      } /* Made glow slightly more visible */
+      .tilt-effect {
+        transition: transform 0.1s linear;
+      }
+
+      .timeline {
+        position: relative;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem 0;
+      }
+      .timeline::after {
+        content: "";
+        position: absolute;
+        width: 4px;
+        background-color: var(--border-color);
+        box-shadow: 0 0 8px rgba(var(--border-color), 0.7);
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -2px;
+        border-radius: 2px;
+      }
+      .timeline-item {
+        padding: 10px 40px;
+        position: relative;
+        background-color: inherit;
+        width: 50%;
+        margin-bottom: 40px;
+      }
+      .timeline-item::after {
+        content: "";
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        right: -12px;
+        background-color: var(--accent-color);
+        border: 4px solid var(--secondary-bg);
+        top: 25px;
+        border-radius: 50%;
+        z-index: 1;
+        box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.8);
+        animation: pulseDot 2s infinite ease-in-out;
+      }
+      @keyframes pulseDot {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.8);
+        }
+        50% {
+          transform: scale(1.2);
+          box-shadow: 0 0 25px rgba(var(--accent-color-rgb), 1);
+        }
+      }
+      .timeline-item.left {
+        left: 0;
+      }
+      .timeline-item.right {
+        left: 50%;
+      }
+      .timeline-item.right::after {
+        left: -12px;
+      }
+      .timeline-item-content {
+        padding: 25px;
+        position: relative;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+      .timeline-date {
+        font-family: var(--font-title);
+        color: var(--accent-color);
+        font-size: 1.5em;
+        letter-spacing: 1px;
+        font-weight: normal;
+        margin-bottom: 0.7em;
+        display: block;
+        text-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
+      }
+      .timeline-item-content h4 {
+        color: var(--text-color);
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+      .timeline-item-content p {
+        font-size: 0.95rem;
+      }
+      .timeline-icon {
+        position: absolute;
+        top: 22px;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        font-size: 1.2rem;
+        color: var(--primary-bg);
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .timeline-item.left .timeline-icon {
+        right: -15px;
+        transform: translateX(50%);
+      }
+      .timeline-item.right .timeline-icon {
+        left: -15px;
+        transform: translateX(-50%);
+      }
+
+      #contact-form input[type="text"],
+      #contact-form input[type="email"],
+      #contact-form textarea {
+        background-color: transparent;
+        border-width: 0 0 2px 0;
+        border-style: solid;
+        border-color: var(--border-color);
+        color: var(--text-color);
+        caret-color: var(--accent-color);
+        transition:
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+        padding: 0.75rem 0.25rem;
+        border-radius: 0;
+      }
+      #contact-form input[type="text"]:focus,
+      #contact-form input[type="email"]:focus,
+      #contact-form textarea:focus {
+        border-color: var(--accent-color);
+        box-shadow: 0 1px 0 var(--accent-color);
+        outline: none;
+        background-color: rgba(var(--accent-color-rgb), 0.03);
+      }
+      #contact-form textarea {
+        border-width: 2px;
+        border-radius: 4px;
+        padding: 0.75rem;
+      }
+      #contact-form ::placeholder {
+        color: rgba(var(--text-secondary-color), 0.6);
+      }
+
+      #scroll-progress-container {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        z-index: 9990;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition:
+          opacity 0.3s,
+          visibility 0.3s,
+          transform 0.3s;
+      }
+      #scroll-progress-container.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      #scroll-progress-circle {
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+      }
+      #scroll-progress-circle circle {
+        transition: stroke-dashoffset 0.1s linear;
+      }
+      #scroll-to-top-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: transparent;
+        border: none;
+        color: var(--accent-color);
+        font-size: 1.5rem;
+        padding: 0;
+        line-height: 1;
+        transition:
+          transform 0.2s,
+          text-shadow 0.2s;
+      }
+      #scroll-to-top-btn:hover {
+        transform: translate(-50%, -50%) scale(1.15);
+        text-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.8);
+      }
+
+      /* Custom Context Menu Styles */
+      #custom-context-menu {
+        position: fixed;
+        z-index: 10005;
+        background-color: rgba(16, 24, 39, 0.9);
+        backdrop-filter: blur(4px);
+        /* border: 1px solid var(--border-color); */
+        border-radius: 8px;
+        box-shadow:
+          0px 0px 600px 0px rgba(0, 0, 0, 0.3),
+          0 0 15px rgb(16, 24, 39);
+        padding: 0.5rem;
+        min-width: 220px;
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+        transform-origin: top left;
+        transition:
+          opacity 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+          transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        pointer-events: none;
+      }
+      #custom-context-menu.active {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        pointer-events: auto;
+      }
+      #custom-context-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      #custom-context-menu li a {
+        display: flex;
+        align-items: center;
+        padding: 0.6rem 1rem;
+        color: var(--text-secondary-color);
+        text-decoration: none;
+        font-family: var(--font-secondary);
+        font-size: 0.9rem;
+        border-radius: 4px;
+        transition:
+          background-color 0.2s ease,
+          color 0.2s ease;
+      }
+      #custom-context-menu li a:hover {
+        background-color: rgba(var(--accent-color-rgb), 0.15);
+        color: var(--accent-color);
+      }
+      #custom-context-menu li a i {
+        margin-right: 0.75rem;
+        width: 16px; /* Ensure consistent icon spacing */
+        text-align: center;
+      }
+      #custom-context-menu .context-menu-divider {
+        height: 1px;
+        background-color: var(--border-color);
+        margin: 0.5rem 0;
+      }
+      #custom-context-menu .context-social-links {
+        display: flex;
+        justify-content: space-around;
+        padding: 0.5rem 0 0.25rem;
+      }
+      #custom-context-menu .context-social-links a {
+        padding: 0.5rem; /* Make icons easier to click */
+        font-size: 1.1rem;
+      }
+
+      /* ── Interactive Terminal Page ── */
+      .terminal-page {
+        position: relative;
+        padding: 1.25rem !important;
+        min-height: calc(100vh - 140px) !important;
+        overflow: hidden;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+
+      .terminal-matrix-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.08;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .terminal-layout {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        height: 100%;
+        min-height: calc(100vh - 180px);
+      }
+
+      .terminal-top-panel {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        align-items: start;
+      }
+
+      .terminal-ascii-logo {
+        font-family: var(--font-title);
+        font-size: clamp(2.8rem, 9vw, 5.5rem);
+        line-height: 0.95;
+        color: var(--accent-color);
+        letter-spacing: 4px;
+        text-shadow:
+          0 0 10px rgba(var(--accent-color-rgb), 0.8),
+          0 0 25px rgba(var(--accent-color-rgb), 0.4);
+        animation: terminalGlitch 4s infinite;
+        user-select: none;
+      }
+
+      @keyframes terminalGlitch {
+        0%,
+        92%,
+        100% {
+          transform: translate(0);
+          text-shadow:
+            0 0 10px rgba(var(--accent-color-rgb), 0.8),
+            0 0 25px rgba(var(--accent-color-rgb), 0.4);
+        }
+        93% {
+          transform: translate(-2px, 1px);
+          text-shadow:
+            -2px 0 #ff0055,
+            2px 0 #00ff9c,
+            0 0 15px rgba(var(--accent-color-rgb), 0.9);
+        }
+        95% {
+          transform: translate(2px, -1px);
+          text-shadow:
+            2px 0 #ff0055,
+            -2px 0 #00ff9c;
+        }
+        97% {
+          transform: translate(0);
+        }
+      }
+
+      .terminal-profile-panel {
+        text-align: right;
+        padding: 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        background: rgba(10, 15, 24, 0.75);
+        backdrop-filter: blur(6px);
+        box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.08);
+      }
+
+      .terminal-profile-panel h2 {
+        font-family: var(--font-secondary);
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        color: var(--text-color);
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .terminal-social-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+      }
+
+      .terminal-social-list li {
+        margin-bottom: 0.55rem;
+        font-family: var(--font-secondary);
+        font-size: 0.85rem;
+        animation: terminalLineIn 0.4s ease backwards;
+      }
+
+      .terminal-social-list li:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .terminal-social-list li:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .terminal-social-list li:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .terminal-social-list li:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+
+      .terminal-social-list a {
+        color: var(--text-secondary-color);
+        text-decoration: none;
+        transition:
+          color 0.2s,
+          text-shadow 0.2s;
+      }
+
+      .terminal-social-list a:hover {
+        color: var(--accent-color);
+        text-shadow: 0 0 8px rgba(var(--accent-color-rgb), 0.6);
+      }
+
+      .terminal-social-list i {
+        width: 18px;
+        color: var(--accent-color);
+        margin-right: 0.5rem;
+      }
+
+      .terminal-window {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        background: rgba(10, 15, 24, 0.88);
+        backdrop-filter: blur(8px);
+        box-shadow:
+          0 0 30px rgba(var(--accent-color-rgb), 0.12),
+          inset 0 0 40px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+        min-height: 420px;
+        animation: terminalWindowPulse 3s ease-in-out infinite;
+      }
+
+      @keyframes terminalWindowPulse {
+        0%,
+        100% {
+          box-shadow:
+            0 0 30px rgba(var(--accent-color-rgb), 0.12),
+            inset 0 0 40px rgba(0, 0, 0, 0.4);
+        }
+        50% {
+          box-shadow:
+            0 0 45px rgba(var(--accent-color-rgb), 0.2),
+            inset 0 0 40px rgba(0, 0, 0, 0.4);
+        }
+      }
+
+      .terminal-titlebar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.6rem 1rem;
+        background: rgba(16, 24, 39, 0.95);
+        border-bottom: 1px solid var(--border-color);
+        font-family: var(--font-secondary);
+        font-size: 0.8rem;
+        color: var(--text-secondary-color);
+      }
+
+      .terminal-titlebar-left {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .terminal-titlebar-left a {
+        color: var(--accent-color);
+        transition:
+          transform 0.2s,
+          text-shadow 0.2s;
+      }
+
+      .terminal-titlebar-left a:hover {
+        transform: scale(1.15);
+        text-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.8);
+      }
+
+      .terminal-titlebar-controls {
+        display: flex;
+        gap: 6px;
+      }
+
+      .terminal-titlebar-controls span {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 1px solid var(--border-color);
+        background: var(--primary-bg);
+        transition: background 0.2s;
+      }
+
+      .terminal-titlebar-controls span:nth-child(1):hover {
+        background: #ff5f57;
+      }
+      .terminal-titlebar-controls span:nth-child(2):hover {
+        background: #febc2e;
+      }
+      .terminal-titlebar-controls span:nth-child(3):hover {
+        background: #28c840;
+      }
+
+      .terminal-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 1.25rem;
+        font-family: var(--font-secondary);
+        font-size: 0.9rem;
+        line-height: 1.55;
+        cursor: text;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .terminal-body::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          transparent 50%,
+          rgba(0, 255, 156, 0.02) 50%
+        );
+        background-size: 100% 3px;
+        pointer-events: none;
+        animation: terminalScanline 8s linear infinite;
+      }
+
+      @keyframes terminalScanline {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 0 100%;
+        }
+      }
+
+      .terminal-output {
+        flex: 1;
+        overflow-y: auto;
+        margin-bottom: 0.5rem;
+        padding-right: 0.5rem;
+        max-height: min(55vh, 520px);
+      }
+
+      .terminal-output::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      .terminal-line {
+        margin-bottom: 0.35rem;
+        white-space: pre-wrap;
+        word-break: break-word;
+        animation: terminalLineIn 0.25s ease;
+      }
+
+      @keyframes terminalLineIn {
+        from {
+          opacity: 0;
+          transform: translateX(-6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .terminal-line.system {
+        color: var(--accent-color);
+        text-shadow: 0 0 4px rgba(var(--accent-color-rgb), 0.4);
+      }
+
+      .terminal-line.error {
+        color: #ff6b6b;
+        text-shadow: 0 0 4px rgba(255, 107, 107, 0.4);
+      }
+
+      .terminal-line.success {
+        color: #69ff94;
+      }
+
+      .terminal-line.muted {
+        color: var(--text-secondary-color);
+      }
+
+      .terminal-line.command-echo {
+        color: var(--text-color);
+      }
+
+      .terminal-line .cmd-arrow {
+        color: var(--accent-color);
+        margin-right: 0.4rem;
+      }
+
+      .terminal-line a {
+        color: var(--accent-color);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      .terminal-line a:hover {
+        text-shadow: 0 0 8px rgba(var(--accent-color-rgb), 0.6);
+      }
+
+      .terminal-input-row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 2;
+      }
+
+      .terminal-prompt-text {
+        color: var(--accent-color);
+        text-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5);
+        white-space: nowrap;
+        user-select: none;
+      }
+
+      .terminal-input-display {
+        color: var(--text-color);
+        min-width: 1ch;
+      }
+
+      .terminal-cursor {
+        display: inline-block;
+        color: var(--accent-color);
+        animation: terminalCursorBlink 1s step-end infinite;
+        text-shadow: 0 0 8px rgba(var(--accent-color-rgb), 0.8);
+        margin-left: 1px;
+      }
+
+      @keyframes terminalCursorBlink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .terminal-hidden-input {
+        position: absolute;
+        bottom: 1rem;
+        left: 1.25rem;
+        right: 1.25rem;
+        opacity: 0;
+        width: calc(100% - 2.5rem);
+        height: 2rem;
+        border: none;
+        background: transparent;
+        color: transparent;
+        caret-color: transparent;
+        outline: none;
+        z-index: 3;
+      }
+
+      .terminal-typing-char {
+        animation: terminalCharPop 0.05s ease;
+      }
+
+      @keyframes terminalCharPop {
+        from {
+          opacity: 0.3;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .timeline::after {
+          left: 20px;
+        }
+        .timeline-item {
+          width: 100%;
+          padding-left: 50px;
+          padding-right: 15px;
+        }
+        .timeline-item.left::after,
+        .timeline-item.right::after {
+          left: 8px;
+          width: 24px;
+          height: 24px;
+        }
+        .timeline-item.right {
+          left: 0%;
+        }
+        .timeline-item.left .timeline-icon,
+        .timeline-item.right .timeline-icon {
+          left: 5px;
+          transform: translateX(0);
+        }
+
+        nav #desktop-nav {
+          display: none;
+        }
+        #hamburger-icon {
+          display: block;
+          position: relative;
+        }
+        #modalInnerContent {
+          max-width: 90vw;
+        }
+        #scroll-progress-container {
+          bottom: 20px;
+          right: 20px;
+          width: 50px;
+          height: 50px;
+        }
+        #scroll-to-top-btn {
+          font-size: 1.3rem;
+        }
+        .section-title {
+          font-size: clamp(2.2rem, 6vw, 3rem);
+        }
+        #home-section .hero-title-main {
+          font-size: clamp(2.2rem, 8vw, 3.8rem);
+        }
+        #home-section .hero-title-hacker {
+          font-size: clamp(1.8rem, 6.5vw, 3rem);
+        }
+        #home-section .hero-subtitle {
+          font-size: clamp(1rem, 4.5vw, 1.3rem);
+        }
+        .terminal-top-panel {
+          grid-template-columns: 1fr;
+        }
+        .terminal-profile-panel {
+          text-align: left;
+        }
+        .terminal-ascii-logo {
+          font-size: clamp(2.2rem, 12vw, 3.5rem);
+        }
+        .terminal-output {
+          max-height: 45vh;
+        }
+      }
+      @media (max-width: 640px) {
+        nav .hacker-terminal {
+          width: 100%;
+          text-align: center;
+          margin-bottom: 0.5rem;
+        }
+        .btn {
+          padding: 10px 18px;
+          font-size: 0.9rem;
+        }
+        .interactive-glow-box:hover::before {
+          width: 180px;
+          height: 180px;
+          opacity: 0.5;
+        }
+        .section-title {
+          font-size: clamp(2rem, 7vw, 2.8rem);
+        }
+        #home-section .hero-title-main {
+          font-size: clamp(2rem, 7.5vw, 3.2rem);
+        }
+        #home-section .hero-title-hacker {
+          font-size: clamp(1.6rem, 6vw, 2.6rem);
+        }
+      }
+    </style>
+  </head>
+  <body class="text-lg">
+    <div class="scanline-overlay"></div>
+
+    <div id="loader" class="loader-overlay">
+      <div class="loader-word">LOADING...</div>
+    </div>
+
+    <div
+      id="projectModal"
+      class="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none z-[10000]"
+    >
+      <div
+        id="modalInnerContent"
+        class="bg-[var(--secondary-bg)] p-6 md:p-8 rounded-xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col border border-[var(--border-color)]"
+      >
+        <div
+          class="flex justify-between items-center mb-4 pb-4 border-b border-[var(--border-color)]"
+        >
+          <h3
+            id="modalTitle"
+            class="text-2xl md:text-3xl title-font text-[var(--accent-color)]"
+          >
+            Project Title
+          </h3>
+          <button
+            id="closeModal"
+            class="text-[var(--text-secondary-color)] hover:text-[var(--accent-color)] text-3xl transition-colors duration-200"
+          >
+            &times;
+          </button>
+        </div>
+        <div
+          id="modalDescriptionContainer"
+          class="overflow-y-auto pr-2 flex-grow"
+        >
+          <img
+            id="modalImage"
+            src=""
+            alt="Project Image"
+            class="w-full h-auto max-h-80 object-contain rounded-lg mb-6 shadow-lg"
+            onerror="this.style.display = 'none'"
+          />
+          <h4 class="text-xl title-font text-[var(--accent-color)] mb-2">
+            Description:
+          </h4>
+          <div
+            id="modalDescription"
+            class="text-[var(--text-secondary-color)] mb-6 leading-relaxed text-base"
+          ></div>
+          <h4 class="text-xl title-font text-[var(--accent-color)] mb-2">
+            Technologies Used:
+          </h4>
+          <div id="modalTech" class="flex flex-wrap gap-2 mb-6"></div>
+        </div>
+        <div
+          class="mt-auto pt-4 border-t border-[var(--border-color)] text-right"
+        >
+          <a
+            id="modalProjectLink"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary mt-2 inline-block"
+            >Visit Project <i class="fas fa-external-link-alt ml-2"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+
+    <header class="sticky top-0 z-[1001]">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="flex items-center justify-between py-3">
+          <a
+            href="#home"
+            class="text-2xl font-bold title-font text-[var(--accent-color)] tracking-wider"
+            >Muhammad_Abdullah</a
+          >
+          <ul
+            id="desktop-nav"
+            class="flex items-center space-x-1 md:space-x-2 lg:space-x-3"
+          >
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#services" class="nav-link">Services</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#terminal" class="nav-link">Terminal</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+          <div id="hamburger-icon">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <div id="mobile-nav-panel">
+      <ul>
+        <li><a href="#home" class="nav-link mobile-nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link mobile-nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link mobile-nav-link">Skills</a></li>
+        <li>
+          <a href="#services" class="nav-link mobile-nav-link">Services</a>
+        </li>
+        <li>
+          <a href="#projects" class="nav-link mobile-nav-link">Projects</a>
+        </li>
+        <li>
+          <a href="#terminal" class="nav-link mobile-nav-link">Terminal</a>
+        </li>
+        <li><a href="#contact" class="nav-link mobile-nav-link">Contact</a></li>
+      </ul>
+    </div>
+
+    <main
+      id="main-content"
+      class="container mx-auto px-4 sm:px-6 lg:px-8 py-10"
+    ></main>
+
+    <div id="custom-context-menu">
+      <ul>
+        <li>
+          <a href="#home" class="context-menu-link"
+            ><i class="fas fa-home"></i>Home</a
+          >
+        </li>
+        <li>
+          <a href="#about" class="context-menu-link"
+            ><i class="fas fa-user-secret"></i>About</a
+          >
+        </li>
+        <li>
+          <a href="#skills" class="context-menu-link"
+            ><i class="fas fa-cogs"></i>Skills</a
+          >
+        </li>
+        <li>
+          <a href="#services" class="context-menu-link"
+            ><i class="fas fa-concierge-bell"></i>Services</a
+          >
+        </li>
+        <li>
+          <a href="#projects" class="context-menu-link"
+            ><i class="fas fa-briefcase"></i>Projects</a
+          >
+        </li>
+        <li>
+          <a href="#terminal" class="context-menu-link"
+            ><i class="fas fa-terminal"></i>Terminal</a
+          >
+        </li>
+        <li>
+          <a href="#contact" class="context-menu-link"
+            ><i class="fas fa-envelope"></i>Contact</a
+          >
+        </li>
+      </ul>
+      <div class="context-menu-divider"></div>
+      <div class="context-social-links">
+        <a
+          href="https://linkedin.com/in/dhillon99"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="LinkedIn"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a href="mailto:abdullahdhillu99@gmail.com" title="Email"
+          ><i class="fas fa-envelope"></i
+        ></a>
+        <a href="tel:+14243877518" title="Phone"
+          ><i class="fas fa-phone"></i
+        ></a>
+        <a
+          href="https://wa.me/14243877518"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="WhatsApp"
+          ><i class="fab fa-whatsapp"></i
+        ></a>
+      </div>
+    </div>
+
+    <div id="scroll-progress-container">
+      <svg id="scroll-progress-circle" viewBox="0 0 36 36">
+        <path
+          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+          fill="none"
+          stroke="var(--border-color)"
+          stroke-width="2.5"
+        />
+        <path
+          id="progress-bar"
+          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+          fill="none"
+          stroke="var(--accent-color)"
+          stroke-width="2.5"
+          stroke-dasharray="100, 100"
+          stroke-dashoffset="100"
+        />
+      </svg>
+      <button id="scroll-to-top-btn"><i class="fas fa-arrow-up"></i></button>
+    </div>
+
+    <footer class="text-center py-8 mt-16">
+      <div class="mb-6 flex justify-center items-center space-x-6">
+        <a
+          href="https://linkedin.com/in/dhillon99"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-[var(--text-secondary-color)] hover:text-[var(--accent-color)] text-3xl transition-all duration-300 transform hover:scale-125"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a
+          href="mailto:abdullahdhillu99@gmail.com"
+          class="text-[var(--text-secondary-color)] hover:text-[var(--accent-color)] mx-3 text-3xl transition-all duration-300 transform hover:scale-125"
+          ><i class="fas fa-envelope"></i
+        ></a>
+        <a
+          href="tel:+14243877518"
+          class="text-[var(--text-secondary-color)] hover:text-[var(--accent-color)] mx-3 text-3xl transition-all duration-300 transform hover:scale-125"
+          ><i class="fas fa-phone"></i
+        ></a>
+        <a
+          href="https://wa.me/14243877518"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-[var(--text-secondary-color)] hover:text-[var(--accent-color)] mx-3 text-3xl transition-all duration-300 transform hover:scale-125"
+          ><i class="fab fa-whatsapp"></i
+        ></a>
+      </div>
+      <p class="text-sm text-gray-400">
+        &copy; <span id="currentYear"></span> Muhammad Abdullah. All rights
+        reserved.
+      </p>
+      <p class="text-xs text-gray-500 mt-2">
+        Connection established. System integrity:
+        <span class="hacker-terminal text-xs">100%</span>. Standby for next
+        command...
+      </p>
+    </footer>
+
+    <script>
+      const pageContent = {
+        home: `
+                <section id="home-section" class="content-section text-center flex flex-col justify-center items-center relative overflow-hidden">
+                    <canvas id="matrix-rain-canvas"></canvas>
+                    <div class="max-w-4xl z-10 relative py-10 md:py-16">
+                        <h1 class="font-bold mb-6">
+                            <span class="hero-title-hacker">// Booting: Muhammad Abdullah</span>
+                            <span class="hero-title-main block">Full Stack Developer</span>
+                        </h1>
+                        <p class="hero-subtitle text-[var(--text-secondary-color)] mb-8">
+                            React.js Specialist | Next.js Developer | Tailwind CSS | Full-Stack Integrations
+                        </p>
+                        <p class="text-lg text-gray-400 mb-12 leading-relaxed max-w-2xl mx-auto">
+                            Results-driven Frontend Developer with expertise in React.js, Next.js, and modern UI frameworks such as Tailwind CSS. Skilled in building responsive, user-focused web applications with robust state management and seamless API integrations. Demonstrated ability to deliver scalable, maintainable solutions and collaborate effectively on full-stack projects.
+                        </p>
+                        <div class="mb-16 space-y-4 sm:space-y-0 sm:space-x-4">
+                            <a href="#projects" class="btn btn-primary text-lg px-8 py-3">Explore My Work <i class="fas fa-folder-open ml-2"></i></a>
+                            <a href="#terminal" class="btn btn-outline text-lg px-8 py-3">Open Terminal <i class="fas fa-terminal ml-2"></i></a>
+                            <a href="#contact" class="btn btn-outline text-lg px-8 py-3">Get In Touch <i class="fas fa-envelope ml-2"></i></a>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center max-w-3xl mx-auto mb-16">
+                            <div class="key-metric-box interactive-glow-box p-6 rounded-lg border border-[var(--border-color)] bg-[var(--primary-bg)] transform hover:-translate-y-1 transition-transform duration-300 tilt-effect">
+                                <i class="fas fa-briefcase text-5xl text-[var(--accent-color)] mb-3 animate-pulse-slow"></i>
+                                <p class="text-3xl title-font text-white" data-count="2">0</p>
+                                <p class="text-[var(--text-secondary-color)] text-sm uppercase tracking-wider">Years Experience</p>
+                            </div>
+                            <div class="key-metric-box interactive-glow-box p-6 rounded-lg border border-[var(--border-color)] bg-[var(--primary-bg)] transform hover:-translate-y-1 transition-transform duration-300 tilt-effect">
+                                <i class="fas fa-project-diagram text-5xl text-[var(--accent-color)] mb-3 animate-pulse-slow" style="animation-delay: 0.2s;"></i>
+                                <p class="text-3xl title-font text-white" data-count="8">0</p>
+                                <p class="text-[var(--text-secondary-color)] text-sm uppercase tracking-wider">Projects Completed</p>
+                            </div>
+                            <div class="key-metric-box interactive-glow-box p-6 rounded-lg border border-[var(--border-color)] bg-[var(--primary-bg)] transform hover:-translate-y-1 transition-transform duration-300 tilt-effect">
+                                <i class="fas fa-award text-5xl text-[var(--accent-color)] mb-3 animate-pulse-slow" style="animation-delay: 0.4s;"></i>
+                                <p class="text-3xl title-font text-white" data-count="3">0</p>
+                                <p class="text-[var(--text-secondary-color)] text-sm uppercase tracking-wider">Awards & Certifications</p>
+                            </div>
+                        </div>
+
+                        <div class="w-full max-w-4xl z-10 relative mb-16">
+                            <h3 class="text-2xl md:text-3xl title-font text-[var(--accent-color)] mb-8 text-center">// My Approach_</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                                <div class="approach-step-box interactive-glow-box p-6 rounded-lg border border-[var(--border-color)] bg-[var(--primary-bg)] tilt-effect">
+                                    <i class="fas fa-lightbulb text-3xl text-[var(--accent-color)] mb-3"></i>
+                                    <h4 class="text-xl title-font text-white mb-2">1. Plan & Architect</h4>
+                                    <p class="text-sm text-[var(--text-secondary-color)]">Designing scalable application architecture with React, Next.js, and robust state management.</p>
+                                </div>
+                                <div class="approach-step-box interactive-glow-box p-6 rounded-lg border border-[var(--border-color)] bg-[var(--primary-bg)] tilt-effect">
+                                    <i class="fas fa-drafting-compass text-3xl text-[var(--accent-color)] mb-3"></i>
+                                    <h4 class="text-xl title-font text-white mb-2">2. Build & Integrate</h4>
+                                    <p class="text-sm text-[var(--text-secondary-color)]">Crafting responsive UIs with Tailwind CSS and connecting seamless REST API integrations.</p>
+                                </div>
+                                <div class="approach-step-box interactive-glow-box p-6 rounded-lg border border-[var(--border-color)] bg-[var(--primary-bg)] tilt-effect">
+                                    <i class="fas fa-cogs text-3xl text-[var(--accent-color)] mb-3"></i>
+                                    <h4 class="text-xl title-font text-white mb-2">3. Deploy & Iterate</h4>
+                                    <p class="text-sm text-[var(--text-secondary-color)]">Delivering maintainable full-stack solutions with Docker, Vercel, and continuous refinement.</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                         <div class="w-full max-w-4xl z-10 relative">
+                            <h3 class="text-2xl md:text-3xl title-font text-[var(--accent-color)] mb-8 text-center">// Featured Skills_</h3>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
+                                ${[
+                                  {
+                                    name: "React.js",
+                                    icon: "fab fa-react",
+                                    color: "text-sky-400",
+                                  },
+                                  {
+                                    name: "Next.js",
+                                    icon: "fas fa-layer-group",
+                                    color: "text-gray-300",
+                                  },
+                                  {
+                                    name: "TypeScript",
+                                    icon: "fas fa-code",
+                                    color: "text-blue-400",
+                                  },
+                                  {
+                                    name: "Tailwind CSS",
+                                    icon: "fab fa-css3-alt",
+                                    color: "text-blue-500",
+                                  },
+                                  {
+                                    name: "Node.js",
+                                    icon: "fab fa-node-js",
+                                    color: "text-green-500",
+                                  },
+                                ]
+                                  .map(
+                                    (skill) => `
+                                    <div class="featured-skill-box interactive-glow-box p-4 rounded-lg border border-[var(--border-color)] bg-[var(--primary-bg)] transform hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center justify-center aspect-square tilt-effect">
+                                        <i class="${skill.icon} ${skill.color} text-5xl mb-3 group-hover:animate-bounce"></i>
+                                        <p class="text-sm font-semibold text-white">${skill.name}</p>
+                                    </div>
+                                `,
+                                  )
+                                  .join("")}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `,
+        about: `
+                <section id="about-section" class="content-section">
+                    <h2 class="section-title">About_Me.init()</h2>
+                    <div class="grid md:grid-cols-5 gap-10 items-start">
+                        <div class="md:col-span-2 text-center interactive-glow-box">
+                            <img src="https://placehold.co/400x400/101827/00ff9c?text=MA" alt="Muhammad Abdullah" class="rounded-lg w-full max-w-[280px] mx-auto mb-4 border-4 border-[var(--accent-color)] shadow-xl hover:shadow-2xl transition-shadow duration-300" onerror="this.src='https://placehold.co/300x300/101827/00ff9c?text=Profile+Img'; this.onerror=null;">
+                            <h3 class="text-3xl title-font text-[var(--accent-color)] mt-4">Muhammad Abdullah</h3>
+                            <p class="text-[var(--text-secondary-color)] text-lg">Frontend Developer</p>
+                            <p class="text-sm text-gray-500 mt-1">Sacramento, CA | B.S. Computer Science @ CSUS</p>
+                        </div>
+                        <div class="md:col-span-3">
+                            <p class="mb-4 text-lg leading-relaxed">
+                                Results-driven Frontend Developer with expertise in <strong>React.js, Next.js, and modern UI frameworks</strong> such as Tailwind CSS. Skilled in building responsive, user-focused web applications with robust state management and seamless API integrations.
+                            </p>
+                            <p class="mb-4 text-lg leading-relaxed">
+                                Currently working as a <strong>Freelance Frontend Developer</strong> in Sacramento, California (Jun 2024 – Present), developing and deploying full-stack web applications using Next.js, React, and Node.js. I've built SaaS platforms integrating Graph API and webhooks, and designed AI-powered applications with LLM and voice interaction features.
+                            </p>
+                            <p class="mb-4 text-lg leading-relaxed">
+                                Pursuing a <strong>B.S. in Computer Science</strong> at California State University of Sacramento (GPA: 3.57/4.00). Demonstrated ability to deliver scalable, maintainable solutions and collaborate effectively on full-stack projects across SaaS, AI, booking systems, and distributed infrastructure.
+                            </p>
+                             <p class="text-lg leading-relaxed hacker-terminal">// Contact: <span class="text-[var(--text-color)] font-[var(--font-primary)]">(+1) 424-387-7518 | abdullahdhillu99@gmail.com</span></p>
+                        </div>
+                    </div>
+                    <div class="mt-16 pt-10 border-t border-[var(--border-color)]">
+                        <h3 class="text-2xl md:text-3xl title-font text-[var(--accent-color)] mb-10 text-center">// Timeline_Highlights</h3>
+                        <div class="timeline">
+                            <div class="timeline-item left">
+                                <div class="timeline-icon"><i class="fas fa-briefcase"></i></div>
+                                <div class="timeline-item-content interactive-glow-box tilt-effect">
+                                    <span class="timeline-date">Jun 2024 - Present</span>
+                                    <h4 class="font-semibold mb-2">Freelance Frontend Developer</h4>
+                                    <p class="text-sm text-[var(--text-secondary-color)]">Sacramento, California. Developed full-stack web applications with Next.js, React, and Node.js. Built SaaS Instagram DM automation and AI-powered applications with LLM and voice features.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item right">
+                                <div class="timeline-icon"><i class="fas fa-graduation-cap"></i></div>
+                                <div class="timeline-item-content interactive-glow-box tilt-effect">
+                                    <span class="timeline-date">Dec 2025 - May 2029</span>
+                                    <h4 class="font-semibold mb-2">B.S. Computer Science</h4>
+                                    <p class="text-sm text-[var(--text-secondary-color)]">California State University of Sacramento. GPA: 3.57/4.00. Building foundational expertise in computer science while delivering real-world projects.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item left">
+                                <div class="timeline-icon"><i class="fas fa-trophy"></i></div>
+                                <div class="timeline-item-content interactive-glow-box tilt-effect">
+                                    <span class="timeline-date">2024 - 2025</span>
+                                     <h4 class="font-semibold mb-2">Awards & Certifications</h4>
+                                    <p class="text-sm text-[var(--text-secondary-color)]">Campus Sustainability Champion (2025), Top Performer in Coding Challenges (2024), Full-Stack & Frontend Certifications from Udemy.</p>
+                                </div>
+                            </div>
+                             <div class="timeline-item right">
+                                <div class="timeline-icon"><i class="fas fa-code"></i></div>
+                                <div class="timeline-item-content interactive-glow-box tilt-effect">
+                                    <span class="timeline-date">2025 - 2026</span>
+                                    <h4 class="font-semibold mb-2">Key Projects Delivered</h4>
+                                    <p class="text-sm text-[var(--text-secondary-color)]">Auta, DentAI, Wild Oasis, Streamify, and Mini Search Engine — spanning SaaS automation, AI assistants, booking systems, video collaboration, and distributed search infrastructure.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `,
+        skills: `
+                <section id="skills-section" class="content-section">
+                    <h2 class="section-title">Tech_Stack & Abilities</h2>
+                    <p class="text-center text-lg mb-12 text-[var(--text-secondary-color)] max-w-2xl mx-auto">
+                        A comprehensive toolkit spanning frontend frameworks, backend integration, databases, and modern DevOps — built for scalable, maintainable web applications.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-8">
+                        ${[
+                          {
+                            name: "JavaScript (ES6+)",
+                            icon: "fab fa-js-square",
+                            level: "Expert",
+                            color: "text-yellow-400",
+                            proficiency: "92%",
+                          },
+                          {
+                            name: "TypeScript",
+                            icon: "fas fa-code",
+                            level: "Proficient",
+                            color: "text-blue-400",
+                            proficiency: "88%",
+                          },
+                          {
+                            name: "React.js",
+                            icon: "fab fa-react",
+                            level: "Expert",
+                            color: "text-sky-400",
+                            proficiency: "90%",
+                          },
+                          {
+                            name: "Next.js",
+                            icon: "fas fa-layer-group",
+                            level: "Expert",
+                            color: "text-gray-300",
+                            proficiency: "88%",
+                          },
+                          {
+                            name: "HTML5",
+                            icon: "fab fa-html5",
+                            level: "Expert",
+                            color: "text-orange-500",
+                            proficiency: "95%",
+                          },
+                          {
+                            name: "CSS3 & Tailwind CSS",
+                            icon: "fab fa-css3-alt",
+                            level: "Expert",
+                            color: "text-blue-500",
+                            proficiency: "92%",
+                          },
+                          {
+                            name: "Styled Components",
+                            icon: "fas fa-paint-brush",
+                            level: "Proficient",
+                            color: "text-pink-500",
+                            proficiency: "82%",
+                          },
+                          {
+                            name: "Node.js",
+                            icon: "fab fa-node-js",
+                            level: "Proficient",
+                            color: "text-green-500",
+                            proficiency: "85%",
+                          },
+                          {
+                            name: "Express.js",
+                            icon: "fas fa-server",
+                            level: "Proficient",
+                            color: "text-gray-400",
+                            proficiency: "80%",
+                          },
+                          {
+                            name: "REST APIs",
+                            icon: "fas fa-plug",
+                            level: "Proficient",
+                            color: "text-teal-400",
+                            proficiency: "85%",
+                          },
+                          {
+                            name: "MongoDB",
+                            icon: "fas fa-database",
+                            level: "Proficient",
+                            color: "text-green-400",
+                            proficiency: "80%",
+                          },
+                          {
+                            name: "PostgreSQL",
+                            icon: "fas fa-database",
+                            level: "Proficient",
+                            color: "text-blue-300",
+                            proficiency: "78%",
+                          },
+                          {
+                            name: "Prisma ORM",
+                            icon: "fas fa-project-diagram",
+                            level: "Proficient",
+                            color: "text-indigo-400",
+                            proficiency: "80%",
+                          },
+                          {
+                            name: "Supabase",
+                            icon: "fas fa-cloud",
+                            level: "Proficient",
+                            color: "text-emerald-400",
+                            proficiency: "78%",
+                          },
+                          {
+                            name: "Git & Docker",
+                            icon: "fab fa-git-alt",
+                            level: "Proficient",
+                            color: "text-red-500",
+                            proficiency: "82%",
+                          },
+                          {
+                            name: "Webpack & Vercel",
+                            icon: "fas fa-rocket",
+                            level: "Proficient",
+                            color: "text-purple-400",
+                            proficiency: "80%",
+                          },
+                        ]
+                          .map(
+                            (skill) => `
+                            <div class="skill-item p-6 rounded-lg shadow-md transition-all duration-300 flex flex-col justify-between interactive-glow-box tilt-effect">
+                                <div>
+                                    <div class="flex items-center mb-4">
+                                        <i class="${skill.icon} ${skill.color} text-4xl mr-4"></i>
+                                        <h3 class="text-xl font-semibold hacker-terminal">${skill.name}</h3>
+                                    </div>
+                                    <p class="text-sm text-[var(--text-secondary-color)] mb-3">Level: ${skill.level}</p>
+                                </div>
+                                <div class="w-full bg-[var(--primary-bg)] rounded-full h-3.5 mt-auto border border-[var(--border-color)] overflow-hidden">
+                                    <div class="bg-[var(--accent-color)] h-full rounded-full transition-all duration-500 ease-out" style="width: ${skill.proficiency}; box-shadow: 0 0 8px var(--accent-color), inset 0 0 3px rgba(0,0,0,0.3);"></div>
+                                </div>
+                            </div>
+                        `,
+                          )
+                          .join("")}
+                    </div>
+                </section>
+            `,
+        services: `
+                <section id="services-section" class="content-section">
+                    <h2 class="section-title">Services_Offered</h2>
+                    <p class="text-center text-lg mb-12 text-[var(--text-secondary-color)] max-w-2xl mx-auto">
+                        Delivering end-to-end frontend and full-stack solutions — from responsive UI development to API integration, deployment, and scalable architecture.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        ${[
+                          {
+                            title: "Frontend Web Development",
+                            desc: "Building responsive, user-focused web applications with React.js, Next.js, HTML5, CSS3, and Tailwind CSS. Emphasis on performance, accessibility, and maintainable code.",
+                            icon: "fas fa-laptop-code",
+                          },
+                          {
+                            title: "Full-Stack Application Development",
+                            desc: "Developing and deploying full-stack web applications using Next.js, React, Node.js, Express.js, and modern database solutions including MongoDB and PostgreSQL.",
+                            icon: "fas fa-layer-group",
+                          },
+                          {
+                            title: "API Integration & State Management",
+                            desc: "Seamless REST API integrations, robust state management, and real-time features using webhooks and Graph API for SaaS platforms.",
+                            icon: "fas fa-plug",
+                          },
+                          {
+                            title: "AI-Powered Application Development",
+                            desc: "Designing AI-driven chat systems with LLM integration, voice and text interaction, session-based context tracking, and symptom-based suggestion logic.",
+                            icon: "fas fa-brain",
+                          },
+                          {
+                            title: "SaaS Platform Development",
+                            desc: "Building SaaS-based automation platforms with scalable database architecture, real-time webhooks, and responsive UIs that drive user engagement.",
+                            icon: "fas fa-cloud",
+                          },
+                          {
+                            title: "Deployment & DevOps",
+                            desc: "Deploying applications with Docker, Vercel, Git workflows, and optimized build pipelines using Webpack for production-ready delivery.",
+                            icon: "fas fa-rocket",
+                          },
+                        ]
+                          .map(
+                            (service) => `
+                        <div class="service-item bg-[var(--primary-bg)] p-6 rounded-lg border border-[var(--border-color)] shadow-lg transition-all duration-300 transform hover:-translate-y-1 interactive-glow-box tilt-effect">
+                            <i class="${service.icon} text-4xl text-[var(--accent-color)] mb-4"></i>
+                            <h3 class="text-2xl title-font text-[var(--accent-color)] mb-3">${service.title}</h3>
+                            <p class="text-[var(--text-secondary-color)] leading-relaxed">${service.desc}</p>
+                        </div>
+                        `,
+                          )
+                          .join("")}
+                    </div>
+                </section>
+            `,
+        projects: `
+                <section id="projects-section" class="content-section">
+                    <h2 class="section-title">Project_Showcase.exe</h2>
+                    <p class="text-center text-lg mb-12 text-[var(--text-secondary-color)] max-w-2xl mx-auto">
+                        A selection of projects demonstrating expertise in SaaS automation, AI applications, booking systems, video collaboration, and distributed search infrastructure.
+                    </p>
+                    <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
+                        </div>
+                    <div id="pagination-controls" class="mt-12 flex justify-center items-center space-x-4">
+                        </div>
+                </section>
+            `,
+        contact: `
+                <section id="contact-section" class="content-section">
+                    <h2 class="section-title">Initiate_Contact</h2>
+                    <p class="text-center text-lg mb-12 text-[var(--text-secondary-color)] max-w-xl mx-auto">
+                        Have a project or opportunity? Reach out via the form below or connect directly at abdullahdhillu99@gmail.com or (+1) 424-387-7518.
+                    </p>
+                    <div class="max-w-lg mx-auto bg-[var(--primary-bg)] p-6 sm:p-8 rounded-lg border border-[var(--border-color)] shadow-2xl hover:shadow-[0_0_30px_rgba(var(--accent-color-rgb),0.3)] transition-shadow duration-300 interactive-glow-box">
+                        <form id="contact-form">
+                            <div class="mb-6">
+                                <label for="name" class="block mb-2 text-sm font-medium hacker-terminal">// FROM (Name):</label>
+                                <input type="text" id="name" name="name" class="bg-transparent border-b-2 border-[var(--border-color)] text-[var(--text-color)] text-sm focus:border-[var(--accent-color)] focus:ring-0 block w-full p-2.5 transition-colors duration-300 placeholder-gray-500" placeholder="Your Identifier" required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="block mb-2 text-sm font-medium hacker-terminal">// RETURN_PATH (Email):</label>
+                                <input type="email" id="email" name="email" class="bg-transparent border-b-2 border-[var(--border-color)] text-[var(--text-color)] text-sm focus:border-[var(--accent-color)] focus:ring-0 block w-full p-2.5 transition-colors duration-300 placeholder-gray-500" placeholder="your.signal@domain.com" required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="subject" class="block mb-2 text-sm font-medium hacker-terminal">// SUBJECT_LINE:</label>
+                                <input type="text" id="subject" name="subject" class="bg-transparent border-b-2 border-[var(--border-color)] text-[var(--text-color)] text-sm focus:border-[var(--accent-color)] focus:ring-0 block w-full p-2.5 transition-colors duration-300 placeholder-gray-500" placeholder="Transmission Subject" required>
+                            </div>
+                            <div class="mb-8">
+                                <label for="message" class="block mb-2 text-sm font-medium hacker-terminal">// MESSAGE_PAYLOAD:</label>
+                                <textarea id="message" name="message" rows="5" class="bg-transparent border-2 border-[var(--border-color)] text-[var(--text-color)] text-sm rounded-md focus:border-[var(--accent-color)] focus:ring-0 block w-full p-2.5 transition-colors duration-300 placeholder-gray-500" placeholder="Your encrypted message..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-full py-3.5 text-base">Transmit Message <i class="fas fa-paper-plane ml-2"></i></button>
+                        </form>
+                        <div id="form-status" class="mt-5 text-center hacker-terminal text-sm"></div>
+                    </div>
+                </section>
+            `,
+        terminal: `
+                <section id="terminal-section" class="content-section terminal-page">
+                    <canvas id="terminal-matrix-canvas" class="terminal-matrix-bg"></canvas>
+                    <div class="terminal-layout">
+                        <div class="terminal-top-panel">
+                            <div class="terminal-ascii-logo" aria-hidden="true">ABDULLAH</div>
+                            <div class="terminal-profile-panel interactive-glow-box">
+                                <h2>Muhammad Abdullah</h2>
+                                <ul class="terminal-social-list">
+                                    <li><i class="fas fa-file-alt"></i> Resume <span class="text-[var(--text-secondary-color)]">-></span> <a href="#about">View Profile</a></li>
+                                    <li><i class="fab fa-linkedin"></i> LinkedIn <span class="text-[var(--text-secondary-color)]">-></span> <a href="https://linkedin.com/in/dhillon99" target="_blank" rel="noopener noreferrer">dhillon99</a></li>
+                                    <li><i class="fas fa-envelope"></i> Email <span class="text-[var(--text-secondary-color)]">-></span> <a href="mailto:abdullahdhillu99@gmail.com">abdullahdhillu99@gmail.com</a></li>
+                                    <li><i class="fas fa-phone"></i> Phone <span class="text-[var(--text-secondary-color)]">-></span> <a href="tel:+14243877518">(+1) 424-387-7518</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="terminal-window interactive-glow-box" id="terminal-container">
+                            <div class="terminal-titlebar">
+                                <div class="terminal-titlebar-left">
+                                    <a href="https://linkedin.com/in/dhillon99" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                    <span>abdullah@portfolio</span>
+                                </div>
+                                <div class="terminal-titlebar-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+                            </div>
+                            <div class="terminal-body">
+                                <div id="terminal-output" class="terminal-output" aria-live="polite"></div>
+                                <div class="terminal-input-row">
+                                    <span class="terminal-prompt-text" id="terminal-prompt-display">[abdullah@matrix-portfolio]~$ </span>
+                                    <span id="terminal-input-display"></span>
+                                    <span class="terminal-cursor" id="terminal-cursor">█</span>
+                                </div>
+                                <input type="text" id="terminal-input" class="terminal-hidden-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Terminal command input" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `,
+      };
+      const projectsData = [
+        {
+          title: "Auta — Instagram DM Automation",
+          img: "https://placehold.co/600x400/0A0F18/00FF9C?text=Auta&font=sourcecodepro",
+          desc: "SaaS-based Instagram DM automation platform with Graph API and webhook integration.",
+          fullDesc:
+            "Auta is a SaaS-based Instagram DM automation platform (May 2025 – Jun 2025). Automated Instagram DM responses based on user actions and keywords, reducing manual reply workload by approximately 65%. Integrated real-time webhooks, improving response time by around 80% (from manual delays to near-instant replies). Designed a scalable database architecture supporting concurrent users with improved reliability. Built a responsive UI, increasing user engagement by an estimated 30%.",
+          tech: [
+            "React",
+            "Next.js",
+            "Node.js",
+            "Graph API",
+            "Webhooks",
+            "MongoDB",
+          ],
+          link: "#",
+        },
+        {
+          title: "DentAI — AI Dental Assistant",
+          img: "https://placehold.co/600x400/0A0F18/00FF9C?text=DentAI&font=sourcecodepro",
+          desc: "AI-powered dental assistant with voice and text interaction capabilities.",
+          fullDesc:
+            "DentAI is an AI-powered dental assistant (Jul 2025 – Sep 2025). Developed an AI-driven chat system, reducing average user query resolution time by approximately 55%. Implemented voice and text interaction, improving accessibility and boosting engagement by around 35%. Designed symptom-based suggestion logic, enhancing response relevance and accuracy. Enabled session-based context tracking, improving user retention and experience consistency.",
+          tech: ["React", "Next.js", "LLM", "Voice API", "Node.js"],
+          link: "#",
+        },
+        {
+          title: "Wild Oasis — Hotel Booking System",
+          img: "https://placehold.co/600x400/0A0F18/00FF9C?text=Wild+Oasis&font=sourcecodepro",
+          desc: "Centralized hotel booking system with CRUD room management and real-time tracking.",
+          fullDesc:
+            "Wild Oasis is a hotel booking system (Sep 2025 – Nov 2025). Built a centralized booking system, reducing manual booking errors by approximately 45%. Implemented CRUD-based room management, improving admin efficiency by around 40%. Developed real-time booking tracking, reducing double-booking conflicts by an estimated 50%. Secured application with authentication and protected routes, improving overall system security.",
+          tech: ["React", "Next.js", "PostgreSQL", "Prisma", "Authentication"],
+          link: "#",
+        },
+        {
+          title: "Streamify — Video Collaboration Platform",
+          img: "https://placehold.co/600x400/0A0F18/00FF9C?text=Streamify&font=sourcecodepro",
+          desc: "Full-stack AI video recording and workspace-based collaboration platform.",
+          fullDesc:
+            "Streamify is an AI video recording and collaboration platform (2026). Developed a full-stack recording platform, reducing video upload latency by approximately 35% through optimized chunk handling. Implemented real-time processing pipelines, improving video readiness time by around 50%. Designed workspace-based collaboration, increasing team productivity and organization. Optimized recording lifecycle management, reducing redundant data transfer and server load by an estimated 30%.",
+          tech: ["React", "Next.js", "Node.js", "WebSockets", "Docker"],
+          link: "#",
+        },
+        {
+          title: "Mini Search Engine Infrastructure",
+          img: "https://placehold.co/600x400/0A0F18/00FF9C?text=Search+Engine&font=sourcecodepro",
+          desc: "Distributed web crawler and indexing system with semantic re-ranking.",
+          fullDesc:
+            "Mini Search Engine Core Infrastructure is a distributed web crawler and indexing system (2026). Designed a distributed web crawler using a Master-Worker architecture, improving crawling scalability by approximately 70% across multiple nodes. Implemented a Redis-backed priority queue with tiered crawling, increasing crawl efficiency and high-value page coverage by around 60%. Integrated a semantic re-ranking layer using vector embeddings, enhancing search accuracy and user intent matching by around 35%.",
+          tech: [
+            "Node.js",
+            "Redis",
+            "Vector Embeddings",
+            "Distributed Systems",
+            "Docker",
+          ],
+          link: "#",
+        },
+        {
+          title: "Portfolio Website (This Site!)",
+          img: "https://placehold.co/600x400/0A0F18/00FF9C?text=Portfolio&font=sourcecodepro",
+          desc: "Personal portfolio built with vanilla JS and a matrix-inspired hacker theme.",
+          fullDesc:
+            "The very website you are currently viewing! Built from scratch using HTML, CSS, and vanilla JavaScript with a custom client-side router, OOP-based structure, and a distinctive matrix/hacker aesthetic. Features smooth page transitions, interactive effects, and a responsive design showcasing my frontend development skills.",
+          tech: [
+            "HTML5",
+            "CSS3",
+            "JavaScript (ES6+)",
+            "TailwindCSS",
+            "SPA Design",
+          ],
+          link: "#",
+        },
+      ];
+
+      class TextScrambleLoader {
+        constructor(el, phrases = ["LOADING..."]) {
+          this.el = el;
+          this.phrases = phrases;
+          this.chars = "!<>-_\\/[]{}—=+*^?#";
+          this.update = this.update.bind(this);
+          this.frameRequest = null;
+          this.currentPhraseIndex = 0;
+          this.resolvePromise = null;
+          this.isCycling = false;
+        }
+
+        setText(newText) {
+          return new Promise((resolve) => {
+            this.resolvePromise = resolve;
+            const oldText = this.el.textContent || "";
+            this.queue = [];
+            const length = Math.max(oldText.length, newText.length);
+            for (let i = 0; i < length; i++) {
+              const from = oldText[i] || "";
+              const to = newText[i] || "";
+              const start = Math.floor(Math.random() * 5) + 1;
+              const end = start + Math.floor(Math.random() * 5) + 2;
+              this.queue.push({ from, to, start, end, char: null });
+            }
+            cancelAnimationFrame(this.frameRequest);
+            this.frame = 0;
+            this.update();
+          });
+        }
+
+        async cyclePhrases(targetCycles = 1, delayBetween = 10) {
+          this.isCycling = true;
+          this.currentPhraseIndex = 0;
+          for (
+            let cycle = 0;
+            cycle < targetCycles * this.phrases.length;
+            cycle++
+          ) {
+            if (!this.isCycling) break;
+            await this.setText(this.phrases[this.currentPhraseIndex]);
+            this.currentPhraseIndex =
+              (this.currentPhraseIndex + 1) % this.phrases.length;
+            if (cycle < targetCycles * this.phrases.length - 1) {
+              await new Promise((r) => setTimeout(r, delayBetween));
+            }
+          }
+          this.isCycling = false;
+        }
+
+        stopCycleAndResolve() {
+          this.isCycling = false;
+          cancelAnimationFrame(this.frameRequest);
+          if (this.resolvePromise) {
+            if (this.queue && this.queue.length > 0 && this.el) {
+              let finalText = "";
+              this.queue.forEach((item) => (finalText += item.to));
+              this.el.innerHTML = finalText;
+            }
+            this.resolvePromise();
+            this.resolvePromise = null;
+          }
+        }
+
+        update() {
+          let output = "";
+          let complete = 0;
+          if (!this.queue) return;
+
+          for (let i = 0, n = this.queue.length; i < n; i++) {
+            let { from, to, start, end, char } = this.queue[i];
+            if (this.frame >= end) {
+              complete++;
+              output += to;
+            } else if (this.frame >= start) {
+              if (!char || Math.random() < 0.7) {
+                char =
+                  this.chars[Math.floor(Math.random() * this.chars.length)];
+                this.queue[i].char = char;
+              }
+              output += `<span class="dud">${char}</span>`;
+            } else {
+              output += from;
+            }
+          }
+          if (this.el) this.el.innerHTML = output;
+
+          if (complete === this.queue.length) {
+            cancelAnimationFrame(this.frameRequest);
+            if (this.resolvePromise) {
+              this.resolvePromise();
+              this.resolvePromise = null;
+            }
+          } else {
+            this.frameRequest = requestAnimationFrame(this.update);
+            this.frame++;
+          }
+        }
+      }
+
+      class HackerTerminal {
+        constructor(appRef) {
+          this.app = appRef;
+          this.username = "abdullah";
+          this.hostname = "portfolio";
+          this.prompt = `[${this.username}@${this.hostname}]~$ `;
+          this.commandHistory = [];
+          this.historyIndex = -1;
+          this.isTyping = false;
+          this.isDestroyed = false;
+          this.outputEl = null;
+          this.inputEl = null;
+          this.inputDisplayEl = null;
+          this.promptDisplayEl = null;
+          this.boundKeyDown = this.handleKeyDown.bind(this);
+          this.boundInput = this.updateInputDisplay.bind(this);
+          this.boundFocusClick = this.focusInput.bind(this);
+        }
+
+        init() {
+          this.outputEl = document.getElementById("terminal-output");
+          this.inputEl = document.getElementById("terminal-input");
+          this.inputDisplayEl = document.getElementById(
+            "terminal-input-display",
+          );
+          this.promptDisplayEl = document.getElementById(
+            "terminal-prompt-display",
+          );
+          const container = document.getElementById("terminal-container");
+
+          if (!this.outputEl || !this.inputEl || !container) return;
+
+          if (this.promptDisplayEl)
+            this.promptDisplayEl.textContent = this.prompt;
+
+          this.inputEl.addEventListener("keydown", this.boundKeyDown);
+          this.inputEl.addEventListener("input", this.boundInput);
+          container.addEventListener("click", this.boundFocusClick);
+
+          this.runBootSequence();
+        }
+
+        destroy() {
+          this.isDestroyed = true;
+          const container = document.getElementById("terminal-container");
+          if (this.inputEl) {
+            this.inputEl.removeEventListener("keydown", this.boundKeyDown);
+            this.inputEl.removeEventListener("input", this.boundInput);
+          }
+          if (container)
+            container.removeEventListener("click", this.boundFocusClick);
+        }
+
+        focusInput() {
+          if (this.inputEl && !this.isTyping) this.inputEl.focus();
+        }
+
+        updateInputDisplay() {
+          if (this.inputDisplayEl && this.inputEl) {
+            this.inputDisplayEl.textContent = this.inputEl.value;
+          }
+        }
+
+        scrollToBottom() {
+          if (this.outputEl) {
+            this.outputEl.scrollTop = this.outputEl.scrollHeight;
+          }
+        }
+
+        addLine(content, className = "muted") {
+          if (!this.outputEl || this.isDestroyed) return;
+          const line = document.createElement("div");
+          line.className = `terminal-line ${className}`;
+          line.innerHTML = content;
+          this.outputEl.appendChild(line);
+          this.scrollToBottom();
+        }
+
+        sleep(ms) {
+          return new Promise((resolve) => setTimeout(resolve, ms));
+        }
+
+        async typeLine(content, className = "system", speed = 18) {
+          if (!this.outputEl || this.isDestroyed) return;
+          const line = document.createElement("div");
+          line.className = `terminal-line ${className}`;
+          this.outputEl.appendChild(line);
+
+          for (let i = 0; i < content.length; i++) {
+            if (this.isDestroyed) return;
+            line.textContent += content[i];
+            this.scrollToBottom();
+            await this.sleep(speed + Math.random() * 12);
+          }
+        }
+
+        async runBootSequence() {
+          this.isTyping = true;
+          const bootLines = [
+            { text: "// INITIALIZING SHELL v2.0.26...", cls: "system" },
+            { text: "// Loading kernel modules........ [OK]", cls: "system" },
+            { text: "// Mounting /dev/portfolio....... [OK]", cls: "system" },
+            { text: "// Syncing project database...... [OK]", cls: "system" },
+            { text: "// Secure channel established.... [OK]", cls: "success" },
+            { text: "", cls: "muted" },
+            { text: "Welcome to my portfolio terminal.", cls: "muted" },
+            {
+              text: "Type 'help' for a list of supported commands.",
+              cls: "muted",
+            },
+            { text: "", cls: "muted" },
+          ];
+
+          for (const { text, cls } of bootLines) {
+            if (text === "") {
+              this.addLine("&nbsp;", cls);
+            } else {
+              await this.typeLine(text, cls, 14);
+            }
+          }
+
+          this.isTyping = false;
+          this.focusInput();
+        }
+
+        handleKeyDown(e) {
+          if (this.isTyping || this.isDestroyed) {
+            e.preventDefault();
+            return;
+          }
+
+          if (e.key === "Enter") {
+            e.preventDefault();
+            const cmd = this.inputEl.value.trim();
+            this.addLine(
+              `<span class="terminal-prompt-text">${this.prompt}</span>${this.escapeHtml(cmd)}`,
+              "command-echo",
+            );
+            this.inputEl.value = "";
+            this.updateInputDisplay();
+            if (cmd) {
+              this.commandHistory.push(cmd);
+              this.historyIndex = this.commandHistory.length;
+              this.processCommand(cmd);
+            }
+            return;
+          }
+
+          if (e.key === "ArrowUp") {
+            e.preventDefault();
+            if (this.commandHistory.length === 0) return;
+            this.historyIndex = Math.max(0, this.historyIndex - 1);
+            this.inputEl.value = this.commandHistory[this.historyIndex];
+            this.updateInputDisplay();
+            return;
+          }
+
+          if (e.key === "ArrowDown") {
+            e.preventDefault();
+            if (this.commandHistory.length === 0) return;
+            this.historyIndex = Math.min(
+              this.commandHistory.length,
+              this.historyIndex + 1,
+            );
+            this.inputEl.value =
+              this.historyIndex >= this.commandHistory.length
+                ? ""
+                : this.commandHistory[this.historyIndex];
+            this.updateInputDisplay();
+            return;
+          }
+
+          if (e.key === "Tab") {
+            e.preventDefault();
+            this.autoComplete();
+          }
+
+          if (e.key === "l" && e.ctrlKey) {
+            e.preventDefault();
+            this.clearOutput();
+          }
+        }
+
+        escapeHtml(str) {
+          return str
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+        }
+
+        clearOutput() {
+          if (this.outputEl) this.outputEl.innerHTML = "";
+        }
+
+        autoComplete() {
+          const val = this.inputEl.value.trim();
+          const commands = Object.keys(this.getCommands()).sort();
+          const pages = [
+            "home",
+            "about",
+            "skills",
+            "services",
+            "projects",
+            "contact",
+            "terminal",
+          ];
+
+          if (!val) {
+            this.inputEl.value = "help";
+            this.updateInputDisplay();
+            return;
+          }
+
+          const parts = val.split(/\s+/);
+          const cmd = parts[0].toLowerCase();
+
+          if (parts.length === 1) {
+            const match = commands.find((c) => c.startsWith(cmd));
+            if (match) {
+              this.inputEl.value = match;
+              this.updateInputDisplay();
+            }
+            return;
+          }
+
+          if (["goto", "open", "cat"].includes(cmd) && parts.length === 2) {
+            const target = parts[1].toLowerCase();
+            const fileTargets = [
+              "about.txt",
+              "skills.txt",
+              "projects.txt",
+              "experience.txt",
+              "contact.txt",
+            ];
+            const pool = cmd === "cat" ? fileTargets : pages;
+            const match = pool.find((p) => p.startsWith(target));
+            if (match) {
+              this.inputEl.value = `${cmd} ${match}`;
+              this.updateInputDisplay();
+            }
+          }
+        }
+
+        async processCommand(raw) {
+          this.isTyping = true;
+          const parts = raw.trim().split(/\s+/);
+          const name = parts[0].toLowerCase();
+          const args = parts.slice(1);
+          const commands = this.getCommands();
+
+          if (name === "clear") {
+            this.clearOutput();
+            this.isTyping = false;
+            this.focusInput();
+            return;
+          }
+
+          if (name === "boot") {
+            this.clearOutput();
+            await this.runBootSequence();
+            this.isTyping = false;
+            this.focusInput();
+            return;
+          }
+
+          if (commands[name]) {
+            const result = await commands[name](args, raw);
+            await this.printResult(result);
+          } else if (name) {
+            this.addLine(
+              `Command not found: '${this.escapeHtml(name)}'. Type 'help' for available commands.`,
+              "error",
+            );
+          }
+
+          this.isTyping = false;
+          this.focusInput();
+        }
+
+        async printResult(result) {
+          if (!result) return;
+          const lines = Array.isArray(result) ? result : [result];
+          for (const line of lines) {
+            if (typeof line === "object" && line.type === "html") {
+              this.addLine(line.content, line.className || "muted");
+            } else if (typeof line === "string" && line.startsWith("//")) {
+              await this.typeLine(line, "system", 10);
+            } else {
+              this.addLine(this.escapeHtml(String(line)), "muted");
+            }
+            await this.sleep(25);
+          }
+        }
+
+        getCommands() {
+          return {
+            help: () => [
+              "Available commands:",
+              "",
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> about / aboutme — Display who I am',
+                className: "muted",
+              },
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> social — List social networks & contact links',
+                className: "muted",
+              },
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> projects — View coding projects',
+                className: "muted",
+              },
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> skills — Display technical skills',
+                className: "muted",
+              },
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> experience — Work experience details',
+                className: "muted",
+              },
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> education — Education & GPA',
+                className: "muted",
+              },
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> email — Open email client',
+                className: "muted",
+              },
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> contact — Contact information',
+                className: "muted",
+              },
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> neofetch — System info banner',
+                className: "muted",
+              },
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> goto &lt;section&gt; — Navigate (home, projects, etc.)',
+                className: "muted",
+              },
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> ls — List available sections',
+                className: "muted",
+              },
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> cat &lt;file&gt; — Read a file (about.txt, skills.txt...)',
+                className: "muted",
+              },
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> history — View command history',
+                className: "muted",
+              },
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> whoami — Current user identity',
+                className: "muted",
+              },
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> clear — Clear terminal screen',
+                className: "muted",
+              },
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> boot — Re-run boot sequence',
+                className: "muted",
+              },
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> sudo — Try your luck...',
+                className: "muted",
+              },
+            ],
+
+            about: () => this.cmdAbout(),
+            aboutme: () => this.cmdAbout(),
+
+            social: () => [
+              "Social & Contact Links:",
+              "",
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> LinkedIn: <a href="https://linkedin.com/in/dhillon99" target="_blank" rel="noopener noreferrer">linkedin.com/in/dhillon99</a>',
+                className: "muted",
+              },
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> Email: <a href="mailto:abdullahdhillu99@gmail.com">abdullahdhillu99@gmail.com</a>',
+                className: "muted",
+              },
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> Phone: <a href="tel:+14243877518">(+1) 424-387-7518</a>',
+                className: "muted",
+              },
+              {
+                type: "html",
+                content:
+                  '<span class="cmd-arrow">↳</span> WhatsApp: <a href="https://wa.me/14243877518" target="_blank" rel="noopener noreferrer">wa.me/14243877518</a>',
+                className: "muted",
+              },
+            ],
+
+            projects: () => {
+              const lines = ["Project Showcase:", ""];
+              projectsData.forEach((p, i) => {
+                lines.push(`${i + 1}. ${p.title}`);
+                lines.push(`   ${p.desc}`);
+                lines.push(`   Stack: ${p.tech.join(", ")}`);
+                lines.push("");
+              });
+              lines.push(
+                "Run 'goto projects' to open the full project gallery.",
+              );
+              return lines;
+            },
+
+            skills: () => [
+              "Technical Skills:",
+              "",
+              "Programming: JavaScript (ES6+), TypeScript",
+              "Frontend: React.js, Next.js, HTML5, CSS3, Tailwind CSS, Styled Components",
+              "Backend & Tools: Node.js, Express.js, REST APIs, MongoDB, PostgreSQL",
+              "ORM & Cloud: Prisma ORM, Supabase, Vercel",
+              "DevOps: Git, Docker, Webpack, Postman",
+            ],
+
+            experience: () => [
+              "Work Experience:",
+              "",
+              "Freelance Frontend Developer | Sacramento, CA | Jun 2024 – Present",
+              "↳ Developed full-stack web apps with Next.js, React, and Node.js",
+              "↳ Built SaaS Instagram DM automation with Graph API & webhooks",
+              "↳ Designed AI-powered apps with LLM and voice interaction",
+            ],
+
+            education: () => [
+              "Education:",
+              "",
+              "B.S. Computer Science — California State University of Sacramento",
+              "Dec 2025 – May 2029 | GPA: 3.57 / 4.00",
+              "",
+              "Awards:",
+              "↳ Campus Sustainability Champion — 2025",
+              "↳ Top Performer in Coding Challenges — 2024",
+              "↳ Full-Stack & Frontend Certifications — Udemy",
+            ],
+
+            email: () => {
+              window.open("mailto:abdullahdhillu99@gmail.com", "_self");
+              return [
+                "Opening mail client...",
+                "Target: abdullahdhillu99@gmail.com",
+              ];
+            },
+
+            contact: () => [
+              "Contact Information:",
+              "",
+              "Name: Muhammad Abdullah",
+              "Role: Frontend Developer",
+              "Location: Sacramento, California",
+              "Phone: (+1) 424-387-7518",
+              "Email: abdullahdhillu99@gmail.com",
+              "LinkedIn: linkedin.com/in/dhillon99",
+              "",
+              "Run 'goto contact' to open the contact form.",
+            ],
+
+            whoami: () => [
+              "muhammad-abdullah — Frontend Developer @ Sacramento, CA",
+            ],
+
+            pwd: () => ["/home/abdullah/portfolio"],
+
+            date: () => [new Date().toString()],
+
+            echo: (args) => (args.length ? [args.join(" ")] : [""]),
+
+            ls: () => [
+              "about/  skills/  projects/  experience/  contact/  awards/",
+              "about.txt  skills.txt  projects.txt  experience.txt  contact.txt",
+            ],
+
+            cat: (args) => {
+              if (!args.length) return ["Usage: cat <filename>"];
+              const file = args[0].toLowerCase();
+              const files = {
+                "about.txt": this.cmdAbout(),
+                "skills.txt": this.getCommands().skills(),
+                "projects.txt": this.getCommands().projects(),
+                "experience.txt": this.getCommands().experience(),
+                "contact.txt": this.getCommands().contact(),
+              };
+              if (files[file]) return files[file];
+              return [`cat: ${file}: No such file`];
+            },
+
+            history: () => {
+              if (!this.commandHistory.length)
+                return ["No commands in history."];
+              return this.commandHistory.map((cmd, i) => `  ${i + 1}  ${cmd}`);
+            },
+
+            neofetch: () => [
+              {
+                type: "html",
+                content: `<span class="text-[var(--accent-color)]">abdullah@portfolio</span>`,
+                className: "system",
+              },
+              "─────────────────────────────────────",
+              "OS: Portfolio Shell v2.0.26",
+              "Host: portfolio",
+              "Kernel: Vanilla JS SPA Router",
+              "Uptime: Always online",
+              "Shell: hacker-terminal",
+              "Theme: Matrix Green (#00ff9c)",
+              "Role: Full Stack Developer",
+              "Location: Sacramento, CA",
+              "Projects: 5 deployed | GPA: 3.57",
+              "Stack: React, Next.js, Node.js, Tailwind",
+            ],
+
+            goto: (args) => this.cmdGoto(args),
+            open: (args) => this.cmdGoto(args),
+
+            sudo: () => [
+              "Password: ********",
+              "",
+              "Nice try. Permission denied.",
+              "This incident will be reported to /dev/null.",
+            ],
+          };
+        }
+
+        cmdAbout() {
+          return [
+            "Muhammad Abdullah — Full Stack Developer",
+            "",
+            "Results-driven developer with expertise in React.js, Next.js, and Tailwind CSS.",
+            "Skilled in responsive web apps, state management, and API integrations.",
+            "",
+            "Currently freelancing in Sacramento, CA (Jun 2024 – Present).",
+            "Pursuing B.S. Computer Science at CSUS (GPA: 3.57/4.00).",
+          ];
+        }
+
+        cmdGoto(args) {
+          const pages = [
+            "home",
+            "about",
+            "skills",
+            "services",
+            "projects",
+            "contact",
+            "terminal",
+          ];
+          const target = args[0]?.toLowerCase();
+          if (!target)
+            return ["Usage: goto <section>", `Sections: ${pages.join(", ")}`];
+          if (!pages.includes(target)) {
+            return [
+              `Section '${target}' not found.`,
+              `Available: ${pages.join(", ")}`,
+            ];
+          }
+          setTimeout(() => this.app.navigateTo(`#${target}`), 400);
+          return [
+            `// Routing to /${target}...`,
+            "// Packet transfer initiated.",
+          ];
+        }
+      }
+
+      class PortfolioApp {
+        constructor() {
+          this.mainContent = document.getElementById("main-content");
+          this.hamburgerIcon = document.getElementById("hamburger-icon");
+          this.mobileNavPanel = document.getElementById("mobile-nav-panel");
+
+          this.loaderElement = document.getElementById("loader");
+          this.loaderTextElement =
+            this.loaderElement.querySelector(".loader-word");
+          this.textScrambleLoader = new TextScrambleLoader(
+            this.loaderTextElement,
+            [
+              "INITIATING_SEQUENCE...",
+              "ACCESSING_DATA_GRID...",
+              "RENDERING_INTERFACE...",
+              "SYSTEM_READY.",
+            ],
+          );
+          this.isNavigating = false;
+          this.currentRoute = this.getCurrentHash();
+
+          this.projectModal = document.getElementById("projectModal");
+          this.modalTitle = document.getElementById("modalTitle");
+          this.modalImage = document.getElementById("modalImage");
+          this.modalDescription = document.getElementById("modalDescription");
+          this.modalTech = document.getElementById("modalTech");
+          this.modalProjectLink = document.getElementById("modalProjectLink");
+          this.closeModalButton = document.getElementById("closeModal");
+
+          this.customContextMenu = document.getElementById(
+            "custom-context-menu",
+          );
+
+          this.scrollProgressContainer = document.getElementById(
+            "scroll-progress-container",
+          );
+          this.progressBar = document.getElementById("progress-bar");
+          this.scrollToTopBtn = document.getElementById("scroll-to-top-btn");
+
+          this.currentPage = 1;
+          this.projectsPerPage = 6;
+          this.matrixRainInstance = null;
+          this.terminalInstance = null;
+          this.activeCounters = [];
+
+          this.init();
+        }
+
+        getCurrentHash() {
+          return window.location.hash || "#home";
+        }
+
+        init() {
+          window.addEventListener("hashchange", () =>
+            this.onRouteChange(false),
+          );
+          window.addEventListener("load", () => {
+            this.currentRoute = this.getCurrentHash();
+            this.onRouteChange(true);
+            document.getElementById("currentYear").textContent =
+              new Date().getFullYear();
+            this.setupScrollListener();
+            this.setupCustomContextMenu();
+          });
+
+          document.querySelectorAll(".nav-link").forEach((link) => {
+            link.addEventListener("click", (e) => {
+              e.preventDefault();
+              const targetHash = link.getAttribute("href");
+              if (targetHash !== this.currentRoute && !this.isNavigating) {
+                this.navigateTo(targetHash);
+              }
+              if (this.mobileNavPanel.classList.contains("open")) {
+                this.toggleMobileNav();
+              }
+            });
+          });
+
+          if (this.hamburgerIcon)
+            this.hamburgerIcon.addEventListener("click", () =>
+              this.toggleMobileNav(),
+            );
+          if (this.closeModalButton)
+            this.closeModalButton.addEventListener("click", () =>
+              this.closeProjectModal(),
+            );
+          if (this.projectModal)
+            this.projectModal.addEventListener("click", (e) => {
+              if (e.target === this.projectModal) this.closeProjectModal();
+            });
+          if (this.scrollToTopBtn)
+            this.scrollToTopBtn.addEventListener("click", () =>
+              window.scrollTo({ top: 0, behavior: "smooth" }),
+            );
+        }
+
+        toggleMobileNav() {
+          this.hamburgerIcon.classList.toggle("open");
+          this.mobileNavPanel.classList.toggle("open");
+          document.body.style.overflow = this.mobileNavPanel.classList.contains(
+            "open",
+          )
+            ? "hidden"
+            : "";
+        }
+
+        async handleContactForm(event) {
+          event.preventDefault();
+          const form = event.target;
+          const statusDiv = document.getElementById("form-status");
+          statusDiv.innerHTML = `<p class="text-yellow-400 hacker-terminal">// Transmitting...</p>`;
+
+          await this.showLoader(false, "SENDING_PACKET...");
+          await new Promise((resolve) => setTimeout(resolve, 600));
+
+          const success = Math.random() > 0.2;
+          if (success) {
+            statusDiv.innerHTML = `<p class="text-[var(--accent-color)] hacker-terminal">// TRANSMISSION_OK :: ACK</p>`;
+            form.reset();
+          } else {
+            statusDiv.innerHTML = `<p class="text-red-500 hacker-terminal">// TRANSMISSION_FAIL :: NACK</p>`;
+          }
+          await this.hideLoader();
+        }
+
+        async showLoader(isNavigation = true, customText = null) {
+          this.loaderElement.classList.add("visible");
+          await this.textScrambleLoader.stopCycleAndResolve();
+
+          if (customText) {
+            await this.textScrambleLoader.setText(customText);
+          } else if (isNavigation) {
+            await this.textScrambleLoader.cyclePhrases(1, 10);
+          } else {
+            await this.textScrambleLoader.setText("PROCESSING...");
+          }
+        }
+
+        async hideLoader() {
+          await this.textScrambleLoader.stopCycleAndResolve();
+          this.loaderElement.classList.remove("visible");
+        }
+
+        async navigateTo(hash) {
+          if (this.isNavigating || hash === this.currentRoute) return;
+          this.isNavigating = true;
+
+          await this.showLoader(true);
+          window.location.hash = hash;
+        }
+
+        async onRouteChange(isInitialLoad = false) {
+          const newHash = this.getCurrentHash();
+
+          if (!isInitialLoad && newHash === this.currentRoute) {
+            this.isNavigating = false;
+            await this.hideLoader();
+            return;
+          }
+
+          if (!this.isNavigating) {
+            await this.showLoader(true);
+          }
+
+          const pageKey = newHash.substring(1);
+          this.clearCounters();
+
+          try {
+            if (this.matrixRainInstance) {
+              this.matrixRainInstance.stop();
+              this.matrixRainInstance = null;
+            }
+            if (this.terminalInstance) {
+              this.terminalInstance.destroy();
+              this.terminalInstance = null;
+            }
+
+            if (pageContent[pageKey]) {
+              this.mainContent.innerHTML = pageContent[pageKey];
+              document.title = `Muhammad Abdullah | ${pageKey.charAt(0).toUpperCase() + pageKey.slice(1)}`;
+              this.updateActiveLink(newHash);
+              this.currentRoute = newHash;
+
+              this.setupGlowEffectListeners();
+              this.setupTiltEffectListeners();
+              if (pageKey === "home") {
+                this.matrixRainInstance = new MatrixRain("matrix-rain-canvas");
+                this.initCounters();
+              }
+              if (pageKey === "terminal") {
+                this.matrixRainInstance = new MatrixRain(
+                  "terminal-matrix-canvas",
+                );
+                this.terminalInstance = new HackerTerminal(this);
+                this.terminalInstance.init();
+              }
+              if (pageKey === "projects") {
+                this.currentPage = 1;
+                this.renderProjects();
+              }
+              if (pageKey === "contact") this.attachContactFormListener();
+            } else {
+              this.mainContent.innerHTML = `<p class="text-red-500 text-center text-2xl hacker-terminal">Error 404: Section /${pageKey} not found. <a href="#home" class="underline hover:text-[var(--accent-color)]">Return to Home_</a></p>`;
+              if (this.currentRoute !== "#home") {
+                window.location.hash = "#home";
+              } else {
+                this.updateActiveLink("#home");
+              }
+            }
+          } catch (error) {
+            console.error("Error during route change:", error);
+            this.mainContent.innerHTML = `<p class="text-red-500 text-center text-2xl hacker-terminal">Critical Error. Please refresh.</p>`;
+          } finally {
+            await new Promise((resolve) => setTimeout(resolve, 30));
+            await this.hideLoader();
+            if (!isInitialLoad) {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+            this.isNavigating = false;
+          }
+        }
+
+        initCounters() {
+          document.querySelectorAll("[data-count]").forEach((el) => {
+            const target = parseInt(el.dataset.count, 10);
+            this.animateCounter(el, target);
+          });
+        }
+
+        animateCounter(element, target) {
+          let current = 0;
+          const duration = 1500;
+          const stepTime = Math.abs(Math.floor(duration / target));
+          const increment =
+            target > current
+              ? Math.ceil(target / (duration / (stepTime > 0 ? stepTime : 1)))
+              : -Math.ceil(
+                  Math.abs(target) / (duration / (stepTime > 0 ? stepTime : 1)),
+                );
+
+          const timer = setInterval(
+            () => {
+              current += increment;
+              if (
+                (increment > 0 && current >= target) ||
+                (increment < 0 && current <= target)
+              ) {
+                current = target;
+                clearInterval(timer);
+              }
+              element.textContent = current;
+            },
+            stepTime > 0 ? stepTime : 1,
+          );
+          this.activeCounters.push(timer);
+        }
+
+        clearCounters() {
+          this.activeCounters.forEach((timer) => clearInterval(timer));
+          this.activeCounters = [];
+        }
+
+        renderProjects() {
+          const projectsGrid = document.getElementById("projects-grid");
+          const paginationControls = document.getElementById(
+            "pagination-controls",
+          );
+          if (!projectsGrid || !paginationControls) return;
+
+          projectsGrid.innerHTML = "";
+          paginationControls.innerHTML = "";
+
+          const startIndex = (this.currentPage - 1) * this.projectsPerPage;
+          const endIndex = startIndex + this.projectsPerPage;
+          const paginatedProjects = projectsData.slice(startIndex, endIndex);
+
+          paginatedProjects.forEach((project, indexInPage) => {
+            const actualIndex = startIndex + indexInPage;
+            const projectCard = `
+                        <div class="project-card rounded-lg overflow-hidden shadow-xl interactive-glow-box tilt-effect" data-project-index="${actualIndex}">
+                            <img src="${project.img}" alt="${project.title}" class="w-full object-cover" onerror="this.src='https://placehold.co/600x400/101827/00FF9C?text=Error&font=sourcecodepro'; this.onerror=null;">
+                            <div class="p-6">
+                                <div>
+                                    <h3 class="text-xl lg:text-2xl font-semibold mb-3 title-font text-[var(--accent-color)]">${project.title}</h3>
+                                    <p class="text-sm text-[var(--text-secondary-color)] mb-4 leading-relaxed">${project.desc}</p>
+                                    <div class="mb-4 flex flex-wrap">
+                                        ${project.tech.map((t) => `<span class="inline-block bg-[var(--secondary-bg)] border border-[var(--border-color)] text-[var(--accent-color)] text-xs font-semibold mr-2 mb-2 px-3 py-1 rounded-full shadow-sm">${t}</span>`).join("")}
+                                    </div>
+                                </div>
+                                <button data-project-index="${actualIndex}" class="project-details-button btn btn-outline text-sm mt-auto self-start py-2 px-4">View Details <i class="fas fa-info-circle ml-1"></i></button>
+                            </div>
+                        </div>`;
+            projectsGrid.innerHTML += projectCard;
+          });
+
+          this.attachProjectButtonListeners();
+          this.setupGlowEffectListeners();
+          this.setupTiltEffectListeners();
+          this.renderPaginationControls();
+        }
+
+        renderPaginationControls() {
+          const paginationControls = document.getElementById(
+            "pagination-controls",
+          );
+          if (!paginationControls) return;
+
+          const totalPages = Math.ceil(
+            projectsData.length / this.projectsPerPage,
+          );
+          if (totalPages <= 1) {
+            paginationControls.innerHTML = "";
+            return;
+          }
+
+          let controlsHTML = `
+                    <button id="prev-page-btn" class="btn btn-outline ${this.currentPage === 1 ? "disabled" : ""}" ${this.currentPage === 1 ? "disabled" : ""}>
+                        <i class="fas fa-angle-left mr-2"></i> Previous
+                    </button>
+                    <span class="hacker-terminal text-lg">Page ${this.currentPage} of ${totalPages}</span>
+                    <button id="next-page-btn" class="btn btn-outline ${this.currentPage === totalPages ? "disabled" : ""}" ${this.currentPage === totalPages ? "disabled" : ""}>
+                        Next <i class="fas fa-angle-right ml-2"></i>
+                    </button>
+                `;
+          paginationControls.innerHTML = controlsHTML;
+
+          document
+            .getElementById("prev-page-btn")
+            ?.addEventListener("click", () => {
+              if (this.currentPage > 1) {
+                this.currentPage--;
+                this.renderProjects();
+              }
+            });
+          document
+            .getElementById("next-page-btn")
+            ?.addEventListener("click", () => {
+              if (this.currentPage < totalPages) {
+                this.currentPage++;
+                this.renderProjects();
+              }
+            });
+        }
+
+        attachContactFormListener() {
+          const contactForm = document.getElementById("contact-form");
+          if (contactForm && !contactForm.dataset.listenerAttached) {
+            contactForm.addEventListener(
+              "submit",
+              this.handleContactForm.bind(this),
+            );
+            contactForm.dataset.listenerAttached = "true";
+          }
+        }
+
+        openProjectModal(projectIndex) {
+          const project = projectsData[projectIndex];
+          if (!project || !this.projectModal) return;
+
+          this.modalTitle.textContent = project.title;
+          this.modalImage.src = project.img;
+          this.modalImage.alt = project.title;
+          this.modalImage.style.display = project.img ? "block" : "none";
+          this.modalDescription.innerHTML = project.fullDesc.replace(
+            /\n/g,
+            "<br>",
+          );
+
+          this.modalTech.innerHTML = "";
+          project.tech.forEach((techName) => {
+            const techTag = document.createElement("span");
+            techTag.className =
+              "inline-block bg-[var(--primary-bg)] border border-[var(--border-color)] text-[var(--accent-color)] text-xs font-semibold mr-2 mb-2 px-3 py-1 rounded-full shadow-sm";
+            techTag.textContent = techName;
+            this.modalTech.appendChild(techTag);
+          });
+
+          if (project.link && project.link !== "#") {
+            this.modalProjectLink.href = project.link;
+            this.modalProjectLink.style.display = "inline-block";
+          } else {
+            this.modalProjectLink.style.display = "none";
+          }
+          this.projectModal.classList.add("active");
+          document.body.style.overflow = "hidden";
+        }
+
+        closeProjectModal() {
+          if (!this.projectModal) return;
+          this.projectModal.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+
+        attachProjectButtonListeners() {
+          document
+            .querySelectorAll(".project-details-button")
+            .forEach((button) => {
+              const newButton = button.cloneNode(true);
+              button.parentNode.replaceChild(newButton, button);
+              newButton.addEventListener("click", (event) => {
+                const projectIndex = parseInt(
+                  event.currentTarget.dataset.projectIndex,
+                );
+                this.openProjectModal(projectIndex);
+              });
+            });
+        }
+
+        setupGlowEffectListeners() {
+          document.querySelectorAll(".interactive-glow-box").forEach((box) => {
+            if (box.dataset.glowListenerAttached === "true") return;
+            box.addEventListener("mousemove", (e) => {
+              const rect = box.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              box.style.setProperty("--mouse-x", `${x}px`);
+              box.style.setProperty("--mouse-y", `${y}px`);
+            });
+            box.dataset.glowListenerAttached = "true";
+          });
+        }
+
+        setupTiltEffectListeners() {
+          document.querySelectorAll(".tilt-effect").forEach((el) => {
+            if (el.dataset.tiltListenerAttached === "true") return;
+            const maxTilt = 8;
+
+            el.addEventListener("mousemove", (e) => {
+              const rect = el.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              const centerX = rect.width / 2; // Corrected: Declare with const
+              const centerY = rect.height / 2; // Corrected: Declare with const
+
+              const rotateX = ((y - centerY) / centerY) * -maxTilt;
+              const rotateY = ((x - centerX) / centerX) * maxTilt;
+
+              el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+            });
+
+            el.addEventListener("mouseleave", () => {
+              el.style.transform =
+                "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
+            });
+            el.dataset.tiltListenerAttached = "true";
+          });
+        }
+
+        setupCustomContextMenu() {
+          if (!this.customContextMenu) return;
+
+          document.addEventListener("contextmenu", (e) => {
+            e.preventDefault();
+            const menu = this.customContextMenu;
+            menu.style.display = "block"; // Show to get dimensions
+
+            const menuWidth = menu.offsetWidth;
+            const menuHeight = menu.offsetHeight;
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            let x = e.clientX;
+            let y = e.clientY;
+
+            // Adjust position if too close to edges
+            if (x + menuWidth > windowWidth) {
+              x = windowWidth - menuWidth - 5; // 5px buffer
+              menu.style.transformOrigin = "top right";
+            } else {
+              menu.style.transformOrigin = "top left";
+            }
+
+            if (y + menuHeight > windowHeight) {
+              y = windowHeight - menuHeight - 5; // 5px buffer
+              // Adjust transform origin if also close to right edge
+              if (x + menuWidth > windowWidth) {
+                menu.style.transformOrigin = "bottom right";
+              } else {
+                menu.style.transformOrigin = "bottom left";
+              }
+            } else {
+              // Keep default or left-adjusted origin
+              if (!(x + menuWidth > windowWidth)) {
+                menu.style.transformOrigin = "top left";
+              }
+            }
+
+            menu.style.left = `${Math.max(5, x)}px`; // Ensure it's not off-screen left
+            menu.style.top = `${Math.max(5, y)}px`; // Ensure it's not off-screen top
+
+            // Force reflow for animation
+            void menu.offsetWidth;
+            menu.classList.add("active");
+          });
+
+          document.addEventListener("click", (e) => {
+            if (
+              this.customContextMenu &&
+              !this.customContextMenu.contains(e.target)
+            ) {
+              this.customContextMenu.classList.remove("active");
+              setTimeout(() => {
+                // Wait for animation to finish before hiding
+                if (!this.customContextMenu.classList.contains("active")) {
+                  this.customContextMenu.style.display = "none";
+                }
+              }, 200);
+            }
+          });
+
+          this.customContextMenu
+            .querySelectorAll(".context-menu-link")
+            .forEach((link) => {
+              link.addEventListener("click", (e) => {
+                e.preventDefault();
+                const targetHash = link.getAttribute("href");
+                this.navigateTo(targetHash);
+                this.customContextMenu.classList.remove("active");
+                setTimeout(() => {
+                  this.customContextMenu.style.display = "none";
+                }, 200);
+              });
+            });
+        }
+
+        setupScrollListener() {
+          const circumference = 2 * Math.PI * 15.9155;
+          if (this.progressBar) {
+            this.progressBar.style.strokeDasharray = `${circumference} ${circumference}`;
+            this.progressBar.style.strokeDashoffset = circumference;
+          }
+
+          window.addEventListener(
+            "scroll",
+            () => {
+              const scrollTop = window.scrollY;
+              const docHeight =
+                document.documentElement.scrollHeight - window.innerHeight;
+              const scrollPercent =
+                docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+              const offset =
+                circumference - (scrollPercent / 100) * circumference;
+              if (this.progressBar)
+                this.progressBar.style.strokeDashoffset = Math.max(
+                  0,
+                  Math.min(offset, circumference),
+                );
+
+              if (this.scrollProgressContainer) {
+                if (scrollTop > 200) {
+                  this.scrollProgressContainer.classList.add("visible");
+                } else {
+                  this.scrollProgressContainer.classList.remove("visible");
+                }
+              }
+            },
+            { passive: true },
+          );
+        }
+
+        updateActiveLink(currentHash) {
+          document.querySelectorAll(".nav-link").forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === currentHash) {
+              link.classList.add("active");
+            }
+          });
+        }
+      }
+
+      class MatrixRain {
+        constructor(canvasId) {
+          this.canvas = document.getElementById(canvasId);
+          if (!this.canvas) {
+            return;
+          }
+          this.ctx = this.canvas.getContext("2d");
+          this.animationFrameId = null;
+          this.resizeObserver = new ResizeObserver(() => this.setup());
+
+          this.setup();
+          if (this.canvas.parentElement) {
+            this.resizeObserver.observe(this.canvas.parentElement);
+          } else {
+            this.resizeObserver.observe(document.body);
+          }
+          this.draw = this.draw.bind(this);
+          this.start();
+        }
+
+        setup() {
+          if (!this.canvas) return;
+          const parent = this.canvas.parentElement;
+          if (parent) {
+            this.canvas.width = parent.offsetWidth;
+            this.canvas.height = parent.offsetHeight;
+          } else {
+            this.canvas.width = window.innerWidth;
+            this.canvas.height = window.innerHeight;
+          }
+
+          this.katakana =
+            "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン";
+          this.latin = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+          this.nums = "0123456789";
+          this.characters = this.katakana + this.latin + this.nums;
+
+          this.fontSize = 12;
+          this.columns = Math.floor(this.canvas.width / this.fontSize);
+          if (this.columns <= 0) this.columns = 1;
+          this.drops = [];
+          for (let x = 0; x < this.columns; x++) {
+            this.drops[x] =
+              1 + (Math.random() * this.canvas.height) / this.fontSize;
+          }
+        }
+
+        draw() {
+          if (!this.ctx) return;
+          this.ctx.fillStyle = "rgba(10, 15, 24, 0.04)";
+          this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+          this.ctx.fillStyle =
+            getComputedStyle(document.documentElement)
+              .getPropertyValue("--accent-color")
+              .trim() || "#00FF9C";
+          this.ctx.font = this.fontSize + "px monospace";
+
+          for (let i = 0; i < this.drops.length; i++) {
+            const text = this.characters.charAt(
+              Math.floor(Math.random() * this.characters.length),
+            );
+            this.ctx.fillText(
+              text,
+              i * this.fontSize,
+              this.drops[i] * this.fontSize,
+            );
+
+            if (
+              this.drops[i] * this.fontSize > this.canvas.height &&
+              Math.random() > 0.975
+            ) {
+              this.drops[i] = 0;
+            }
+            this.drops[i]++;
+          }
+          this.animationFrameId = requestAnimationFrame(this.draw);
+        }
+
+        start() {
+          if (!this.animationFrameId && this.canvas && this.ctx) {
+            this.draw();
+          }
+        }
+
+        stop() {
+          if (this.animationFrameId) {
+            cancelAnimationFrame(this.animationFrameId);
+            this.animationFrameId = null;
+          }
+          if (this.resizeObserver && this.canvas && this.canvas.parentElement) {
+            this.resizeObserver.unobserve(this.canvas.parentElement);
+          } else if (this.resizeObserver && this.canvas) {
+            this.resizeObserver.unobserve(document.body);
+          }
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        new PortfolioApp();
+      });
+    </script>
+  </body>
+</html>
