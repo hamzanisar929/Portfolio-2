@@ -32,6 +32,246 @@
         --font-title: "VT323", monospace;
       }
 
+      /* Hacker Multi-Themes */
+      body.theme-amber {
+        --primary-bg: #0d0900;
+        --secondary-bg: #171000;
+        --accent-color: #ffb000;
+        --accent-color-rgb: 255, 176, 0;
+        --text-color: #ffebcc;
+        --text-secondary-color: #d4a373;
+        --border-color: #593e00;
+      }
+      body.theme-blue {
+        --primary-bg: #030a16;
+        --secondary-bg: #071529;
+        --accent-color: #00e5ff;
+        --accent-color-rgb: 0, 229, 255;
+        --text-color: #cceeff;
+        --text-secondary-color: #88ccff;
+        --border-color: #123e70;
+      }
+      body.theme-red {
+        --primary-bg: #0c0101;
+        --secondary-bg: #1b0303;
+        --accent-color: #ff3333;
+        --accent-color-rgb: 255, 51, 51;
+        --text-color: #ffcccc;
+        --text-secondary-color: #ff8888;
+        --border-color: #701212;
+      }
+      body.theme-purple {
+        --primary-bg: #0a0110;
+        --secondary-bg: #140220;
+        --accent-color: #d946ef;
+        --accent-color-rgb: 217, 70, 239;
+        --text-color: #f7e6fd;
+        --text-secondary-color: #c084fc;
+        --border-color: #581c87;
+      }
+
+      /* CRT screen effect, scanlines, bend, vignettes */
+      .crt-vignette {
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle, transparent 50%, rgba(0, 0, 0, 0.4) 100%),
+                    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%),
+                    linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+        background-size: 100% 100%, 100% 4px, 6px 100%;
+        pointer-events: none;
+        z-index: 9999;
+      }
+
+      /* Text Glitch Animation */
+      .glitch-title {
+        position: relative;
+      }
+      .glitch-title:hover::before {
+        content: attr(data-text);
+        position: absolute;
+        left: -2px;
+        text-shadow: -1px 0 #ff00c1;
+        top: 0;
+        color: var(--accent-color);
+        background: var(--secondary-bg);
+        overflow: hidden;
+        clip: rect(0, 900px, 0, 0); 
+        animation: glitch-anim-1 2s infinite linear alternate-reverse;
+      }
+      .glitch-title:hover::after {
+        content: attr(data-text);
+        position: absolute;
+        left: 2px;
+        text-shadow: -1px 0 #00e6ff;
+        top: 0;
+        color: var(--accent-color);
+        background: var(--secondary-bg);
+        overflow: hidden;
+        clip: rect(0, 900px, 0, 0); 
+        animation: glitch-anim-2 2s infinite linear alternate-reverse;
+      }
+      @keyframes glitch-anim-1 {
+        0% { clip: rect(12px, 9999px, 85px, 0); }
+        20% { clip: rect(34px, 9999px, 5px, 0); }
+        40% { clip: rect(62px, 9999px, 92px, 0); }
+        60% { clip: rect(15px, 9999px, 45px, 0); }
+        80% { clip: rect(85px, 9999px, 14px, 0); }
+        100% { clip: rect(98px, 9999px, 63px, 0); }
+      }
+      @keyframes glitch-anim-2 {
+        0% { clip: rect(67px, 9999px, 34px, 0); }
+        20% { clip: rect(82px, 9999px, 91px, 0); }
+        40% { clip: rect(41px, 9999px, 18px, 0); }
+        60% { clip: rect(9px, 9999px, 60px, 0); }
+        80% { clip: rect(54px, 9999px, 88px, 0); }
+        100% { clip: rect(23px, 9999px, 73px, 0); }
+      }
+
+      /* Core Meltdown Shake & Overlay */
+      body.core-meltdown {
+        animation: screen-shake 0.15s infinite;
+      }
+      body.core-meltdown::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-color: rgba(220, 38, 38, 0.2);
+        z-index: 10003;
+        pointer-events: none;
+        animation: flash-red 0.4s infinite alternate;
+      }
+      @keyframes screen-shake {
+        0% { transform: translate(1px, 1px) rotate(0deg); }
+        10% { transform: translate(-1px, -2px) rotate(-1deg); }
+        20% { transform: translate(-3px, 0px) rotate(1deg); }
+        30% { transform: translate(0px, 2px) rotate(0deg); }
+        40% { transform: translate(1px, -1px) rotate(1deg); }
+        50% { transform: translate(-1px, 2px) rotate(-1deg); }
+        60% { transform: translate(-3px, 1px) rotate(0deg); }
+        70% { transform: translate(2px, 1px) rotate(-1deg); }
+        80% { transform: translate(-1px, -1px) rotate(1deg); }
+        90% { transform: translate(2px, 2px) rotate(0deg); }
+        100% { transform: translate(1px, -2px) rotate(-1deg); }
+      }
+      @keyframes flash-red {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      /* System Control HUD Floating Panel */
+      .cyber-hud {
+        position: fixed;
+        bottom: 110px;
+        left: 20px;
+        width: 210px;
+        background: rgba(16, 24, 39, 0.9);
+        backdrop-filter: blur(8px);
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.15);
+        padding: 12px;
+        z-index: 999;
+        font-family: var(--font-secondary);
+        font-size: 0.75rem;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+      .cyber-hud.collapsed {
+        transform: translateY(120px) scale(0.9);
+        opacity: 0.7;
+      }
+      .cyber-hud-header {
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 6px;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: var(--accent-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .cyber-hud-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 6px;
+        color: var(--text-color);
+      }
+      .cyber-hud-value {
+        color: var(--accent-color);
+        font-weight: 500;
+      }
+      .hud-btn {
+        background: transparent;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        padding: 2px 6px;
+        color: var(--text-secondary-color);
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 0.7rem;
+      }
+      .hud-btn:hover {
+        border-color: var(--accent-color);
+        color: var(--accent-color);
+        background: rgba(var(--accent-color-rgb), 0.08);
+      }
+      .destruct-btn {
+        width: 100%;
+        background: rgba(220, 38, 38, 0.1);
+        border: 1px solid rgb(220, 38, 38);
+        color: rgb(248, 113, 113);
+        margin-top: 6px;
+        padding: 4px;
+        font-weight: bold;
+        border-radius: 4px;
+        cursor: pointer;
+        animation: pulse-red 2s infinite;
+        transition: all 0.2s;
+      }
+      .destruct-btn:hover {
+        background: rgb(220, 38, 38);
+        color: white;
+      }
+      @keyframes pulse-red {
+        0%, 100% { box-shadow: 0 0 5px rgba(220, 38, 38, 0.4); }
+        50% { box-shadow: 0 0 15px rgba(220, 38, 38, 0.8); }
+      }
+
+      /* Decrypt Box & Scramble Grid */
+      .scramble-box {
+        font-family: var(--font-secondary);
+        background: rgba(10, 15, 24, 0.6);
+        border: 1px dashed var(--border-color);
+        border-radius: 6px;
+        padding: 12px;
+        overflow: hidden;
+        position: relative;
+        height: 125px;
+      }
+      .scramble-grid {
+        display: grid;
+        grid-template-columns: repeat(14, 1fr);
+        gap: 3px;
+        font-size: 0.75rem;
+        line-height: 1.1;
+        opacity: 0.45;
+        user-select: none;
+      }
+      .scramble-overlay-text {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: rgba(10, 15, 24, 0.8);
+        color: var(--accent-color);
+        font-weight: bold;
+        border-radius: 6px;
+        transition: opacity 0.3s;
+      }
+
+
       body {
         background-color: var(--primary-bg);
         color: var(--text-color);
@@ -1272,6 +1512,34 @@
   </head>
   <body class="text-lg">
     <div class="scanline-overlay"></div>
+    <div class="crt-vignette"></div>
+
+    <!-- System Control HUD Floating Panel -->
+    <div id="system-hud" class="cyber-hud">
+      <div class="cyber-hud-header">
+        <span>SYS_HUD v2.0.26</span>
+        <button id="hud-toggle-btn" class="hud-btn" aria-label="Minimize HUD"><i class="fas fa-chevron-down"></i></button>
+      </div>
+      <div id="hud-content">
+        <div class="cyber-hud-row">
+          <span>ACCESS:</span>
+          <span id="hud-access" class="cyber-hud-value" style="color:var(--accent-color)">USER</span>
+        </div>
+        <div class="cyber-hud-row">
+          <span>THEME:</span>
+          <button id="hud-theme-btn" class="hud-btn">Matrix</button>
+        </div>
+        <div class="cyber-hud-row">
+          <span>AUDIO FX:</span>
+          <button id="hud-audio-btn" class="hud-btn"><i class="fas fa-volume-mute mr-1"></i>OFF</button>
+        </div>
+        <div class="cyber-hud-row">
+          <span>FIREWALL:</span>
+          <span class="cyber-hud-value text-green-400">ACTIVE</span>
+        </div>
+        <button id="hud-destruct-btn" class="destruct-btn">SYS_DESTRUCT</button>
+      </div>
+    </div>
 
     <div id="loader" class="loader-overlay">
       <div class="loader-word">LOADING...</div>
@@ -1615,6 +1883,22 @@
                                   .join("")}
                             </div>
                         </div>
+                        <!-- Intrusion Detection System Live Monitor -->
+                        <div class="w-full max-w-4xl z-10 relative mt-16 text-left">
+                            <h3 class="text-2xl md:text-3xl title-font text-[var(--accent-color)] mb-6 text-center">// Intrusion_Detection_System.live</h3>
+                            <div class="bg-[var(--primary-bg)] border border-[var(--border-color)] rounded-lg p-5 shadow-lg">
+                                <div class="flex items-center justify-between border-b border-[var(--border-color)] pb-2 mb-3">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
+                                        <span class="hacker-terminal text-xs text-red-500 uppercase tracking-widest font-bold">Threat Monitor: ACTIVE</span>
+                                    </div>
+                                    <span class="text-xs text-[var(--text-secondary-color)] font-mono">NODE: 172.16.254.14</span>
+                                </div>
+                                <div id="ids-logs-container" class="hacker-terminal font-mono text-xs text-green-400 overflow-y-auto space-y-1.5 h-44 pr-2 select-text">
+                                    <!-- Dynamic logs will be appended here by JS -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
             `,
@@ -1627,6 +1911,34 @@
                             <h3 class="text-3xl title-font text-[var(--accent-color)] mt-4">Muhammad Abdullah</h3>
                             <p class="text-[var(--text-secondary-color)] text-lg">Frontend Developer</p>
                             <p class="text-sm text-gray-500 mt-1">Sacramento, CA | B.S. Computer Science @ CSUS</p>
+                            
+                            <!-- Secure Resume Decryptor -->
+                            <div class="mt-8 text-left bg-[var(--primary-bg)] border border-[var(--border-color)] rounded-lg p-4 shadow-lg">
+                                <div class="flex items-center space-x-2 mb-3 border-b border-[var(--border-color)] pb-2 text-[var(--accent-color)] font-semibold text-sm">
+                                    <i class="fas fa-lock"></i>
+                                    <span class="hacker-terminal text-xs">SECURE_RECOVERY.EXE</span>
+                                </div>
+                                <div class="scramble-box mb-4">
+                                    <div id="decrypt-scramble-grid" class="scramble-grid"></div>
+                                    <div id="decrypt-overlay" class="scramble-overlay-text">
+                                        <span class="text-xs text-[var(--text-secondary-color)] uppercase tracking-wider">File: RESUME.DAT</span>
+                                        <span class="text-[var(--accent-color)] text-xs mt-1">STATUS: LOCKED</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between mb-3 text-xs">
+                                    <span class="text-gray-400">DECRYPT STATUS:</span>
+                                    <span id="decrypt-percent" class="font-bold text-[var(--accent-color)]">0%</span>
+                                </div>
+                                <div class="w-full bg-[var(--primary-bg)] h-2 rounded-full border border-[var(--border-color)] mb-4 overflow-hidden">
+                                    <div id="decrypt-progress-bar" class="bg-[var(--accent-color)] h-full w-0 transition-all duration-300"></div>
+                                </div>
+                                <button id="decrypt-start-btn" class="btn btn-outline text-xs w-full py-2 tracking-widest text-center flex items-center justify-center">
+                                    <i class="fas fa-unlock mr-2"></i> BYPASS FIREWALL
+                                </button>
+                                <a id="decrypt-download-link" href="#about" class="hidden btn btn-primary text-xs w-full py-2 tracking-widest text-center">
+                                    <i class="fas fa-download mr-2"></i> DOWNLOAD DECRYPTED RESUME
+                                </a>
+                            </div>
                         </div>
                         <div class="md:col-span-3">
                             <p class="mb-4 text-lg leading-relaxed">
@@ -2029,6 +2341,162 @@
         },
       ];
 
+      class HackerAudio {
+        constructor() {
+          this.ctx = null;
+          this.enabled = false;
+        }
+
+        init() {
+          if (this.ctx) return;
+          try {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            this.ctx = new AudioContext();
+          } catch (e) {
+            console.warn("Web Audio API not supported", e);
+          }
+        }
+
+        toggle(force) {
+          this.enabled = force !== undefined ? force : !this.enabled;
+          if (this.enabled) {
+            this.init();
+            if (this.ctx && this.ctx.state === 'suspended') {
+              this.ctx.resume();
+            }
+          }
+          return this.enabled;
+        }
+
+        playTick() {
+          if (!this.enabled || !this.ctx) return;
+          try {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+
+            osc.type = 'sine';
+            const pitch = 800 + Math.random() * 400;
+            osc.frequency.setValueAtTime(pitch, this.ctx.currentTime);
+
+            gain.gain.setValueAtTime(0.015, this.ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.05);
+
+            osc.start(this.ctx.currentTime);
+            osc.stop(this.ctx.currentTime + 0.05);
+          } catch (e) {}
+        }
+
+        playBeep(freq = 800, duration = 0.08) {
+          if (!this.enabled || !this.ctx) return;
+          try {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+
+            gain.gain.setValueAtTime(0.08, this.ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + duration);
+
+            osc.start(this.ctx.currentTime);
+            osc.stop(this.ctx.currentTime + duration);
+          } catch (e) {}
+        }
+
+        playDeny() {
+          if (!this.enabled || !this.ctx) return;
+          try {
+            const now = this.ctx.currentTime;
+            [now, now + 0.12].forEach((time) => {
+              const osc = this.ctx.createOscillator();
+              const gain = this.ctx.createGain();
+              osc.connect(gain);
+              gain.connect(this.ctx.destination);
+              
+              osc.type = 'sawtooth';
+              osc.frequency.setValueAtTime(120, time);
+              
+              gain.gain.setValueAtTime(0.08, time);
+              gain.gain.exponentialRampToValueAtTime(0.0001, time + 0.1);
+              
+              osc.start(time);
+              osc.stop(time + 0.1);
+            });
+          } catch (e) {}
+        }
+
+        playSucceed() {
+          if (!this.enabled || !this.ctx) return;
+          try {
+            const now = this.ctx.currentTime;
+            const notes = [523.25, 659.25, 783.99, 1046.5];
+            notes.forEach((freq, i) => {
+              const time = now + i * 0.08;
+              const osc = this.ctx.createOscillator();
+              const gain = this.ctx.createGain();
+              osc.connect(gain);
+              gain.connect(this.ctx.destination);
+
+              osc.type = 'sine';
+              osc.frequency.setValueAtTime(freq, time);
+
+              gain.gain.setValueAtTime(0.06, time);
+              gain.gain.exponentialRampToValueAtTime(0.0001, time + 0.25);
+
+              osc.start(time);
+              osc.stop(time + 0.25);
+            });
+          } catch (e) {}
+        }
+
+        playAlarm() {
+          if (!this.enabled || !this.ctx) return;
+          try {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(600, this.ctx.currentTime);
+            osc.frequency.linearRampToValueAtTime(900, this.ctx.currentTime + 0.4);
+            osc.frequency.linearRampToValueAtTime(600, this.ctx.currentTime + 0.8);
+
+            gain.gain.setValueAtTime(0.08, this.ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.8);
+
+            osc.start(this.ctx.currentTime);
+            osc.stop(this.ctx.currentTime + 0.8);
+          } catch (e) {}
+        }
+
+        playReboot() {
+          if (!this.enabled || !this.ctx) return;
+          try {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(1200, this.ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(80, this.ctx.currentTime + 1.2);
+
+            gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 1.2);
+
+            osc.start(this.ctx.currentTime);
+            osc.stop(this.ctx.currentTime + 1.2);
+          } catch (e) {}
+        }
+      }
+
+      const audioInstance = new HackerAudio();
+
       class TextScrambleLoader {
         constructor(el, phrases = ["LOADING..."]) {
           this.el = el;
@@ -2146,6 +2614,9 @@
           this.boundKeyDown = this.handleKeyDown.bind(this);
           this.boundInput = this.updateInputDisplay.bind(this);
           this.boundFocusClick = this.focusInput.bind(this);
+          
+          this.terminalState = 'normal'; // 'normal', 'password', 'game'
+          this.gameState = null;
         }
 
         init() {
@@ -2188,7 +2659,11 @@
 
         updateInputDisplay() {
           if (this.inputDisplayEl && this.inputEl) {
-            this.inputDisplayEl.textContent = this.inputEl.value;
+            if (this.terminalState === 'password') {
+              this.inputDisplayEl.textContent = '*'.repeat(this.inputEl.value.length);
+            } else {
+              this.inputDisplayEl.textContent = this.inputEl.value;
+            }
           }
         }
 
@@ -2260,15 +2735,36 @@
             return;
           }
 
+          if (e.key.length === 1 || e.key === "Backspace" || e.key === "Delete") {
+            audioInstance.playTick();
+          }
+
           if (e.key === "Enter") {
             e.preventDefault();
             const cmd = this.inputEl.value.trim();
-            this.addLine(
-              `<span class="terminal-prompt-text">${this.prompt}</span>${this.escapeHtml(cmd)}`,
-              "command-echo",
-            );
+            if (this.terminalState === 'password') {
+              this.addLine(
+                `<span class="terminal-prompt-text">${this.prompt}</span>${'*'.repeat(cmd.length)}`,
+                "command-echo",
+              );
+            } else {
+              this.addLine(
+                `<span class="terminal-prompt-text">${this.prompt}</span>${this.escapeHtml(cmd)}`,
+                "command-echo",
+              );
+            }
             this.inputEl.value = "";
             this.updateInputDisplay();
+
+            if (this.terminalState === 'password') {
+              this.processPassword(cmd);
+              return;
+            }
+            if (this.terminalState === 'game') {
+              this.processGameInput(cmd);
+              return;
+            }
+
             if (cmd) {
               this.commandHistory.push(cmd);
               this.historyIndex = this.commandHistory.length;
@@ -2734,6 +3230,171 @@
             "// Packet transfer initiated.",
           ];
         }
+
+        processPassword(password) {
+          this.isTyping = true;
+          if (password === 'matrix') {
+            this.username = 'root';
+            this.prompt = `[${this.username}@${this.hostname}]# `;
+            if (this.promptDisplayEl) {
+              this.promptDisplayEl.textContent = this.prompt;
+              this.promptDisplayEl.style.color = 'rgb(239, 68, 68)';
+            }
+            const accessEl = document.getElementById("hud-access");
+            if (accessEl) {
+              accessEl.textContent = "ROOT";
+              accessEl.style.color = "rgb(239, 68, 68)";
+            }
+            this.addLine("[OK] Access granted. Welcome, root user.", "success");
+            this.addLine("[WARNING] High privilege level. Execute with caution.", "error");
+            audioInstance.playSucceed();
+          } else {
+            this.addLine("sudo: 1 incorrect password attempt. Permission denied.", "error");
+            audioInstance.playDeny();
+          }
+          this.terminalState = 'normal';
+          this.isTyping = false;
+          this.focusInput();
+        }
+
+        processGameInput(input) {
+          if (input.toLowerCase() === 'exit' || input.toLowerCase() === 'abort') {
+            this.addLine("Game aborted.", "muted");
+            this.terminalState = 'normal';
+            this.focusInput();
+            return;
+          }
+
+          const guess = parseInt(input, 10);
+          if (isNaN(guess)) {
+            this.addLine("Invalid input. Please enter a port number or 'exit'.", "error");
+            audioInstance.playDeny();
+            return;
+          }
+
+          this.gameState.attempts++;
+          if (guess === this.gameState.targetPort) {
+            this.addLine(`[SUCCESS] Port cracked in ${this.gameState.attempts} attempts!`, "success");
+            this.addLine("[INFO] Recovering core system archives...", "system");
+            this.addLine("[INFO] Decrypted hidden profile token: ABDULLAH_ROOT_2026", "success");
+            audioInstance.playSucceed();
+            this.terminalState = 'normal';
+          } else if (guess < this.gameState.targetPort) {
+            this.addLine(`Port ${guess} is closed. Probe returns: value too LOW.`, "muted");
+            audioInstance.playBeep(400, 0.05);
+          } else {
+            this.addLine(`Port ${guess} is closed. Probe returns: value too HIGH.`, "muted");
+            audioInstance.playBeep(400, 0.05);
+          }
+          this.focusInput();
+        }
+
+        cmdTheme(args) {
+          const themes = ['matrix', 'amber', 'blue', 'red', 'purple'];
+          const target = args[0]?.toLowerCase();
+          if (!target) {
+            return [
+              "Usage: theme <name>",
+              `Themes: ${themes.join(", ")}`
+            ];
+          }
+          if (!themes.includes(target)) {
+            return [
+              `Theme '${target}' not found.`,
+              `Available: ${themes.join(", ")}`
+            ];
+          }
+          this.app.setTheme(target);
+          return [
+            `// Setting system accent palette to: ${target.toUpperCase()}`,
+            "// Theme change successful."
+          ];
+        }
+
+        cmdSelfDestruct() {
+          if (this.username !== 'root') {
+            audioInstance.playDeny();
+            return [
+              "Permission denied: Root privilege required.",
+              "Run 'sudo' first to authenticate."
+            ];
+          }
+          setTimeout(() => {
+            this.app.triggerSelfDestruct();
+          }, 600);
+          return [
+            "// WARNING: CRITICAL MELTDOWN SEQUENCE INITIATED",
+            "// DISPATCHING SYSTEM RESET COMMANDS..."
+          ];
+        }
+
+        cmdCowsay(args) {
+          const text = args.length ? args.join(" ") : "Moo! Type something after cowsay.";
+          const border = "-".repeat(text.length + 2);
+          return [
+            `  ${border}`,
+            `  < ${text} >`,
+            `  ${border}`,
+            "         \\   ^__^",
+            "          \\  (oo)\\_______",
+            "             (__)\\       )\\/\\",
+            "                 ||----w |",
+            "                 ||     ||"
+          ];
+        }
+
+        cmdPortscan() {
+          audioInstance.playBeep(700, 0.1);
+          return [
+            "// INITIATING NETWORK SCAN...",
+            "Scanning local loopback 127.0.0.1...",
+            "↳ Port 21 (FTP) ......... CLOSED",
+            "↳ Port 22 (SSH) ......... OPEN (Secure Shell v2)",
+            "↳ Port 80 (HTTP) ........ OPEN (Vanilla Server)",
+            "↳ Port 443 (HTTPS) ...... OPEN (SSL active)",
+            "↳ Port 8080 (DEV) ....... OPEN (React devserver)",
+            "Scan complete: 4 open ports identified."
+          ];
+        }
+
+        cmdMatrix(args) {
+          if (args[0] === '-o' && args[1]) {
+            const op = parseFloat(args[1]);
+            if (isNaN(op) || op < 0 || op > 1) return ["Usage: matrix -o <0.0-1.0>"];
+            const canvases = document.querySelectorAll("canvas");
+            canvases.forEach(c => c.style.opacity = op);
+            return [`Matrix rain opacity set to ${op}`];
+          }
+          if (args[0] === '-c' && args[1]) {
+            const chars = args[1];
+            if (this.app.matrixRainInstance) {
+              this.app.matrixRainInstance.characters = chars;
+            }
+            return [`Matrix rain character set to: ${chars}`];
+          }
+          return [
+            "Matrix Rain settings:",
+            "  matrix -o <opacity>  Set canvas opacity (0.0 to 1.0)",
+            "  matrix -c <string>   Set falling characters pool"
+          ];
+        }
+
+        cmdPlay() {
+          const target = Math.floor(Math.random() * 990) + 10;
+          this.terminalState = 'game';
+          this.gameState = {
+            targetPort: target,
+            attempts: 0
+          };
+          audioInstance.playBeep(800, 0.15);
+          return [
+            "=== SYSTEM PORT BYPASS CRACKER ===",
+            "Target host: 172.16.254.14",
+            "Scanning ports...",
+            "Hint: The open gateway port is between 10 and 1000.",
+            "Type your guess (or 'exit' to quit):"
+          ];
+        }
       }
 
       class PortfolioApp {
@@ -2780,6 +3441,13 @@
           this.matrixRainInstance = null;
           this.terminalInstance = null;
           this.activeCounters = [];
+
+          // Hacker Theme HUD state variables
+          this.currentTheme = 'matrix';
+          this.audioEnabled = false;
+          this.idsLogsInterval = null;
+          this.decryptInterval = null;
+          this.isSelfDestructing = false;
 
           this.init();
         }
@@ -2830,6 +3498,306 @@
             this.scrollToTopBtn.addEventListener("click", () =>
               window.scrollTo({ top: 0, behavior: "smooth" }),
             );
+          
+          this.setupHUDListeners();
+        }
+
+        setupHUDListeners() {
+          const hudToggle = document.getElementById("hud-toggle-btn");
+          const hudContent = document.getElementById("hud-content");
+          const hud = document.getElementById("system-hud");
+
+          if (hudToggle && hud && hudContent) {
+            hudToggle.addEventListener("click", () => {
+              hud.classList.toggle("collapsed");
+              const isCollapsed = hud.classList.contains("collapsed");
+              hudToggle.innerHTML = isCollapsed ? '<i class="fas fa-chevron-up"></i>' : '<i class="fas fa-chevron-down"></i>';
+              audioInstance.playBeep(900, 0.05);
+            });
+          }
+
+          const hudThemeBtn = document.getElementById("hud-theme-btn");
+          if (hudThemeBtn) {
+            hudThemeBtn.addEventListener("click", () => {
+              this.cycleTheme();
+              audioInstance.playBeep(1000, 0.05);
+            });
+          }
+
+          const hudAudioBtn = document.getElementById("hud-audio-btn");
+          if (hudAudioBtn) {
+            hudAudioBtn.addEventListener("click", () => {
+              this.toggleAudio();
+            });
+          }
+
+          const destructBtn = document.getElementById("hud-destruct-btn");
+          if (destructBtn) {
+            destructBtn.addEventListener("click", () => {
+              this.triggerSelfDestruct();
+            });
+          }
+        }
+
+        toggleAudio() {
+          const enabled = audioInstance.toggle();
+          this.audioEnabled = enabled;
+          const hudAudioBtn = document.getElementById("hud-audio-btn");
+          if (hudAudioBtn) {
+            hudAudioBtn.innerHTML = enabled ? '<i class="fas fa-volume-up mr-1"></i>ON' : '<i class="fas fa-volume-mute mr-1"></i>OFF';
+            hudAudioBtn.style.color = enabled ? 'var(--accent-color)' : '';
+          }
+          if (enabled) {
+            audioInstance.playSucceed();
+          }
+        }
+
+        cycleTheme() {
+          const themes = ['matrix', 'amber', 'blue', 'red', 'purple'];
+          let currentIndex = themes.indexOf(this.currentTheme);
+          let nextIndex = (currentIndex + 1) % themes.length;
+          this.setTheme(themes[nextIndex]);
+        }
+
+        setTheme(themeName) {
+          const themes = ['matrix', 'amber', 'blue', 'red', 'purple'];
+          themes.forEach(t => document.body.classList.remove(`theme-${t}`));
+          
+          this.currentTheme = themeName;
+          if (themeName !== 'matrix') {
+            document.body.classList.add(`theme-${themeName}`);
+          }
+          
+          const hudThemeBtn = document.getElementById("hud-theme-btn");
+          const themeNames = {
+            'matrix': 'Matrix',
+            'amber': 'Amber CRT',
+            'blue': 'Sci-Fi',
+            'red': 'Red Alert',
+            'purple': 'Cyber'
+          };
+          if (hudThemeBtn) {
+            hudThemeBtn.textContent = themeNames[themeName];
+          }
+
+          if (this.matrixRainInstance) {
+            this.matrixRainInstance.setup();
+          }
+        }
+
+        startIDSLogs() {
+          this.stopIDSLogs();
+          const container = document.getElementById("ids-logs-container");
+          if (!container) return;
+
+          const initialLogs = [
+            `[${new Date().toLocaleTimeString()}] // INITIATING INTRUSION DETECTION SYSTEM...`,
+            `[${new Date().toLocaleTimeString()}] // Threat Monitor database synced.`,
+            `[${new Date().toLocaleTimeString()}] // Secure gateway tunnel open on interface eth0.`,
+            `[${new Date().toLocaleTimeString()}] // Port scanning defense protocols: LOADED.`,
+            `[${new Date().toLocaleTimeString()}] // Waiting for signals...`
+          ];
+
+          initialLogs.forEach(log => {
+            const line = document.createElement("div");
+            line.textContent = log;
+            container.appendChild(line);
+          });
+
+          const logTemplates = [
+            () => `[${new Date().toLocaleTimeString()}] [INFO] Packet routing: ${this.randomIP()} -> ${this.randomIP()} (56 bytes)`,
+            () => `[${new Date().toLocaleTimeString()}] [WARN] Potential scan on port ${this.randomPort()} from ${this.randomIP()}`,
+            () => `[${new Date().toLocaleTimeString()}] [BLOCKED] Firewall dropped packet from ${this.randomIP()} on port ${this.randomPort()}`,
+            () => `[${new Date().toLocaleTimeString()}] [OK] Security check passed for signature hash: MD5_${Math.random().toString(36).substring(7).toUpperCase()}`,
+            () => `[${new Date().toLocaleTimeString()}] [ALERT] ICMP echo request ping burst detected from ${this.randomIP()}`,
+            () => `[${new Date().toLocaleTimeString()}] [SECURE] SSH root login attempt blocked from ${this.randomIP()}`
+          ];
+
+          this.idsLogsInterval = setInterval(() => {
+            const container = document.getElementById("ids-logs-container");
+            if (!container) return;
+
+            const randomTemplate = logTemplates[Math.floor(Math.random() * logTemplates.length)];
+            const line = document.createElement("div");
+            line.textContent = randomTemplate();
+            container.appendChild(line);
+            
+            while (container.childNodes.length > 50) {
+              container.removeChild(container.firstChild);
+            }
+            
+            container.scrollTop = container.scrollHeight;
+            audioInstance.playTick();
+          }, 3500);
+        }
+
+        stopIDSLogs() {
+          if (this.idsLogsInterval) {
+            clearInterval(this.idsLogsInterval);
+            this.idsLogsInterval = null;
+          }
+        }
+
+        randomIP() {
+          return `${Math.floor(Math.random()*223)+1}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*254)+1}`;
+        }
+
+        randomPort() {
+          const ports = [21, 22, 23, 80, 443, 8080, 3306, 27017, 2222, 5432];
+          return ports[Math.floor(Math.random() * ports.length)];
+        }
+
+        initDecryptor() {
+          this.stopDecryptor();
+          const grid = document.getElementById("decrypt-scramble-grid");
+          if (!grid) return;
+
+          grid.innerHTML = "";
+          const totalSlots = 42; 
+          const charPool = "0123456789ABCDEF!@#$%^&*()_+{}[]|";
+          for (let i = 0; i < totalSlots; i++) {
+            const span = document.createElement("span");
+            span.className = "text-center text-gray-600 font-mono";
+            span.textContent = charPool[Math.floor(Math.random() * charPool.length)];
+            grid.appendChild(span);
+          }
+
+          this.decryptInterval = setInterval(() => {
+            const spans = grid.querySelectorAll("span");
+            spans.forEach(span => {
+              if (Math.random() > 0.7) {
+                span.textContent = charPool[Math.floor(Math.random() * charPool.length)];
+                if (span.classList.contains("text-[var(--accent-color)]")) {
+                  // Keep resolved
+                } else {
+                  span.className = Math.random() > 0.5 ? "text-gray-500 font-mono" : "text-gray-700 font-mono";
+                }
+              }
+            });
+          }, 150);
+
+          const startBtn = document.getElementById("decrypt-start-btn");
+          const overlay = document.getElementById("decrypt-overlay");
+          const percentText = document.getElementById("decrypt-percent");
+          const progressBar = document.getElementById("decrypt-progress-bar");
+          const downloadBtn = document.getElementById("decrypt-download-link");
+
+          if (startBtn) {
+            startBtn.addEventListener("click", () => {
+              startBtn.classList.add("hidden");
+              if (overlay) overlay.style.opacity = "0.15";
+              audioInstance.playBeep(600, 0.1);
+              
+              let progress = 0;
+              const decryptStep = () => {
+                if (progress >= 100) {
+                  progress = 100;
+                  if (percentText) percentText.textContent = "100%";
+                  if (progressBar) progressBar.style.width = "100%";
+                  if (overlay) overlay.innerHTML = '<span class="text-[var(--accent-color)] text-sm font-bold">STATUS: UNLOCKED</span><span class="text-xs text-gray-400">RESUME.DAT DECRYPTED</span>';
+                  if (downloadBtn) {
+                    downloadBtn.classList.remove("hidden");
+                    const mockResumeContent = `MUHAMMAD ABDULLAH\nFull Stack Developer | Sacramento, CA\nEmail: abdullahdhillu99@gmail.com | Phone: (+1) 424-387-7518\n\n[RESUME DATA RECOVERED SUCCESSFULLY]\n\nLink to Profile: https://linkedin.com/in/dhillon99\nThank you for decrypting my resume!`;
+                    const blob = new Blob([mockResumeContent], { type: 'text/plain' });
+                    downloadBtn.href = URL.createObjectURL(blob);
+                    downloadBtn.download = "Muhammad_Abdullah_Resume.txt";
+                  }
+                  audioInstance.playSucceed();
+                  
+                  const spans = grid.querySelectorAll("span");
+                  spans.forEach(s => {
+                    s.className = "text-[var(--accent-color)] font-mono font-bold";
+                  });
+                  return;
+                }
+
+                progress += Math.floor(Math.random() * 8) + 4;
+                if (progress > 100) progress = 100;
+
+                if (percentText) percentText.textContent = `${progress}%`;
+                if (progressBar) progressBar.style.width = `${progress}%`;
+                
+                const spans = grid.querySelectorAll("span");
+                const countToResolve = Math.floor((progress / 100) * spans.length);
+                for (let i = 0; i < countToResolve; i++) {
+                  if (spans[i]) {
+                    spans[i].className = "text-[var(--accent-color)] font-mono font-bold";
+                  }
+                }
+
+                audioInstance.playTick();
+                setTimeout(decryptStep, 100 + Math.random() * 100);
+              };
+
+              decryptStep();
+            });
+          }
+        }
+
+        stopDecryptor() {
+          if (this.decryptInterval) {
+            clearInterval(this.decryptInterval);
+            this.decryptInterval = null;
+          }
+        }
+
+        triggerSelfDestruct() {
+          if (this.isSelfDestructing) return;
+          this.isSelfDestructing = true;
+
+          window.location.hash = "#home";
+          
+          audioInstance.playBeep(440, 0.5);
+
+          const hud = document.getElementById("system-hud");
+          if (hud) hud.classList.add("collapsed");
+
+          document.body.classList.add("core-meltdown");
+
+          const warningOverlay = document.createElement("div");
+          warningOverlay.id = "self-destruct-overlay";
+          warningOverlay.className = "fixed inset-0 bg-black bg-opacity-75 z-[10004] flex flex-col justify-center items-center font-mono text-red-500 text-center p-6";
+          warningOverlay.innerHTML = `
+            <div class="border-4 border-red-600 p-8 rounded-lg max-w-lg bg-black bg-opacity-90 shadow-[0_0_50px_rgba(220,38,38,0.6)] animate-pulse">
+                <i class="fas fa-exclamation-triangle text-6xl mb-4 text-red-600"></i>
+                <h1 class="text-3xl font-bold mb-4 tracking-wider">CRITICAL SYSTEM MELTDOWN</h1>
+                <p class="text-sm mb-6 text-gray-400">Core temperature exceeding threshold. Automatic discharge sequence initiated.</p>
+                <div id="destruct-countdown" class="text-7xl font-bold font-[var(--font-title)] mb-4 text-red-500">5</div>
+                <p class="text-xs uppercase tracking-widest text-red-600 font-semibold animate-pulse">DO NOT REFRESH OR POWER DOWN GRID</p>
+            </div>
+          `;
+          document.body.appendChild(warningOverlay);
+
+          let count = 5;
+          const interval = setInterval(() => {
+            count--;
+            const countEl = document.getElementById("destruct-countdown");
+            if (countEl) countEl.textContent = count;
+            
+            if (count > 0) {
+              audioInstance.playAlarm();
+            } else {
+              clearInterval(interval);
+              audioInstance.playReboot();
+              
+              warningOverlay.innerHTML = "";
+              warningOverlay.className = "fixed inset-0 bg-black z-[10005]";
+              document.body.classList.remove("core-meltdown");
+
+              setTimeout(() => {
+                document.body.removeChild(warningOverlay);
+                window.location.hash = "#terminal";
+                this.isSelfDestructing = false;
+                
+                setTimeout(() => {
+                  if (this.terminalInstance) {
+                    this.terminalInstance.clearOutput();
+                    this.terminalInstance.runBootSequence();
+                  }
+                }, 500);
+              }, 2500);
+            }
+          }, 1000);
         }
 
         toggleMobileNav() {
@@ -2904,6 +3872,9 @@
           this.clearCounters();
 
           try {
+            this.stopIDSLogs();
+            this.stopDecryptor();
+
             if (this.matrixRainInstance) {
               this.matrixRainInstance.stop();
               this.matrixRainInstance = null;
@@ -2924,6 +3895,10 @@
               if (pageKey === "home") {
                 this.matrixRainInstance = new MatrixRain("matrix-rain-canvas");
                 this.initCounters();
+                this.startIDSLogs();
+              }
+              if (pageKey === "about") {
+                this.initDecryptor();
               }
               if (pageKey === "terminal") {
                 this.matrixRainInstance = new MatrixRain(
