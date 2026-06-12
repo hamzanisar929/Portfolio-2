@@ -74,10 +74,19 @@
       .crt-vignette {
         position: fixed;
         inset: 0;
-        background: radial-gradient(circle, transparent 50%, rgba(0, 0, 0, 0.4) 100%),
-                    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%),
-                    linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-        background-size: 100% 100%, 100% 4px, 6px 100%;
+        background:
+          radial-gradient(circle, transparent 50%, rgba(0, 0, 0, 0.4) 100%),
+          linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%),
+          linear-gradient(
+            90deg,
+            rgba(255, 0, 0, 0.03),
+            rgba(0, 255, 0, 0.01),
+            rgba(0, 0, 255, 0.03)
+          );
+        background-size:
+          100% 100%,
+          100% 4px,
+          6px 100%;
         pointer-events: none;
         z-index: 9999;
       }
@@ -95,7 +104,7 @@
         color: var(--accent-color);
         background: var(--secondary-bg);
         overflow: hidden;
-        clip: rect(0, 900px, 0, 0); 
+        clip: rect(0, 900px, 0, 0);
         animation: glitch-anim-1 2s infinite linear alternate-reverse;
       }
       .glitch-title:hover::after {
@@ -107,24 +116,48 @@
         color: var(--accent-color);
         background: var(--secondary-bg);
         overflow: hidden;
-        clip: rect(0, 900px, 0, 0); 
+        clip: rect(0, 900px, 0, 0);
         animation: glitch-anim-2 2s infinite linear alternate-reverse;
       }
       @keyframes glitch-anim-1 {
-        0% { clip: rect(12px, 9999px, 85px, 0); }
-        20% { clip: rect(34px, 9999px, 5px, 0); }
-        40% { clip: rect(62px, 9999px, 92px, 0); }
-        60% { clip: rect(15px, 9999px, 45px, 0); }
-        80% { clip: rect(85px, 9999px, 14px, 0); }
-        100% { clip: rect(98px, 9999px, 63px, 0); }
+        0% {
+          clip: rect(12px, 9999px, 85px, 0);
+        }
+        20% {
+          clip: rect(34px, 9999px, 5px, 0);
+        }
+        40% {
+          clip: rect(62px, 9999px, 92px, 0);
+        }
+        60% {
+          clip: rect(15px, 9999px, 45px, 0);
+        }
+        80% {
+          clip: rect(85px, 9999px, 14px, 0);
+        }
+        100% {
+          clip: rect(98px, 9999px, 63px, 0);
+        }
       }
       @keyframes glitch-anim-2 {
-        0% { clip: rect(67px, 9999px, 34px, 0); }
-        20% { clip: rect(82px, 9999px, 91px, 0); }
-        40% { clip: rect(41px, 9999px, 18px, 0); }
-        60% { clip: rect(9px, 9999px, 60px, 0); }
-        80% { clip: rect(54px, 9999px, 88px, 0); }
-        100% { clip: rect(23px, 9999px, 73px, 0); }
+        0% {
+          clip: rect(67px, 9999px, 34px, 0);
+        }
+        20% {
+          clip: rect(82px, 9999px, 91px, 0);
+        }
+        40% {
+          clip: rect(41px, 9999px, 18px, 0);
+        }
+        60% {
+          clip: rect(9px, 9999px, 60px, 0);
+        }
+        80% {
+          clip: rect(54px, 9999px, 88px, 0);
+        }
+        100% {
+          clip: rect(23px, 9999px, 73px, 0);
+        }
       }
 
       /* Core Meltdown Shake & Overlay */
@@ -141,21 +174,47 @@
         animation: flash-red 0.4s infinite alternate;
       }
       @keyframes screen-shake {
-        0% { transform: translate(1px, 1px) rotate(0deg); }
-        10% { transform: translate(-1px, -2px) rotate(-1deg); }
-        20% { transform: translate(-3px, 0px) rotate(1deg); }
-        30% { transform: translate(0px, 2px) rotate(0deg); }
-        40% { transform: translate(1px, -1px) rotate(1deg); }
-        50% { transform: translate(-1px, 2px) rotate(-1deg); }
-        60% { transform: translate(-3px, 1px) rotate(0deg); }
-        70% { transform: translate(2px, 1px) rotate(-1deg); }
-        80% { transform: translate(-1px, -1px) rotate(1deg); }
-        90% { transform: translate(2px, 2px) rotate(0deg); }
-        100% { transform: translate(1px, -2px) rotate(-1deg); }
+        0% {
+          transform: translate(1px, 1px) rotate(0deg);
+        }
+        10% {
+          transform: translate(-1px, -2px) rotate(-1deg);
+        }
+        20% {
+          transform: translate(-3px, 0px) rotate(1deg);
+        }
+        30% {
+          transform: translate(0px, 2px) rotate(0deg);
+        }
+        40% {
+          transform: translate(1px, -1px) rotate(1deg);
+        }
+        50% {
+          transform: translate(-1px, 2px) rotate(-1deg);
+        }
+        60% {
+          transform: translate(-3px, 1px) rotate(0deg);
+        }
+        70% {
+          transform: translate(2px, 1px) rotate(-1deg);
+        }
+        80% {
+          transform: translate(-1px, -1px) rotate(1deg);
+        }
+        90% {
+          transform: translate(2px, 2px) rotate(0deg);
+        }
+        100% {
+          transform: translate(1px, -2px) rotate(-1deg);
+        }
       }
       @keyframes flash-red {
-        from { opacity: 0; }
-        to { opacity: 1; }
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
 
       /* System Control HUD Floating Panel */
@@ -173,7 +232,9 @@
         z-index: 999;
         font-family: var(--font-secondary);
         font-size: 0.75rem;
-        transition: transform 0.3s ease, opacity 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          opacity 0.3s ease;
       }
       .cyber-hud.collapsed {
         transform: translateY(120px) scale(0.9);
@@ -233,8 +294,13 @@
         color: white;
       }
       @keyframes pulse-red {
-        0%, 100% { box-shadow: 0 0 5px rgba(220, 38, 38, 0.4); }
-        50% { box-shadow: 0 0 15px rgba(220, 38, 38, 0.8); }
+        0%,
+        100% {
+          box-shadow: 0 0 5px rgba(220, 38, 38, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 15px rgba(220, 38, 38, 0.8);
+        }
       }
 
       /* Decrypt Box & Scramble Grid */
@@ -270,7 +336,6 @@
         border-radius: 6px;
         transition: opacity 0.3s;
       }
-
 
       body {
         background-color: var(--primary-bg);
@@ -1518,12 +1583,19 @@
     <div id="system-hud" class="cyber-hud">
       <div class="cyber-hud-header">
         <span>SYS_HUD v2.0.26</span>
-        <button id="hud-toggle-btn" class="hud-btn" aria-label="Minimize HUD"><i class="fas fa-chevron-down"></i></button>
+        <button id="hud-toggle-btn" class="hud-btn" aria-label="Minimize HUD">
+          <i class="fas fa-chevron-down"></i>
+        </button>
       </div>
       <div id="hud-content">
         <div class="cyber-hud-row">
           <span>ACCESS:</span>
-          <span id="hud-access" class="cyber-hud-value" style="color:var(--accent-color)">USER</span>
+          <span
+            id="hud-access"
+            class="cyber-hud-value"
+            style="color: var(--accent-color)"
+            >USER</span
+          >
         </div>
         <div class="cyber-hud-row">
           <span>THEME:</span>
@@ -1531,7 +1603,9 @@
         </div>
         <div class="cyber-hud-row">
           <span>AUDIO FX:</span>
-          <button id="hud-audio-btn" class="hud-btn"><i class="fas fa-volume-mute mr-1"></i>OFF</button>
+          <button id="hud-audio-btn" class="hud-btn">
+            <i class="fas fa-volume-mute mr-1"></i>OFF
+          </button>
         </div>
         <div class="cyber-hud-row">
           <span>FIREWALL:</span>
@@ -2268,7 +2342,7 @@
       const projectsData = [
         {
           title: "Auta — Instagram DM Automation",
-          img: "https://placehold.co/600x400/0A0F18/00FF9C?text=Auta&font=sourcecodepro",
+          img: "./public/work-item-1.jpg",
           desc: "SaaS-based Instagram DM automation platform with Graph API and webhook integration.",
           fullDesc:
             "Auta is a SaaS-based Instagram DM automation platform (May 2025 – Jun 2025). Automated Instagram DM responses based on user actions and keywords, reducing manual reply workload by approximately 65%. Integrated real-time webhooks, improving response time by around 80% (from manual delays to near-instant replies). Designed a scalable database architecture supporting concurrent users with improved reliability. Built a responsive UI, increasing user engagement by an estimated 30%.",
@@ -2280,64 +2354,82 @@
             "Webhooks",
             "MongoDB",
           ],
-          link: "#",
+          link: "https://github.com/abdullahdhillu/auta.git",
         },
         {
           title: "DentAI — AI Dental Assistant",
-          img: "https://placehold.co/600x400/0A0F18/00FF9C?text=DentAI&font=sourcecodepro",
+          img: "./public/work-item-22.png",
           desc: "AI-powered dental assistant with voice and text interaction capabilities.",
           fullDesc:
             "DentAI is an AI-powered dental assistant (Jul 2025 – Sep 2025). Developed an AI-driven chat system, reducing average user query resolution time by approximately 55%. Implemented voice and text interaction, improving accessibility and boosting engagement by around 35%. Designed symptom-based suggestion logic, enhancing response relevance and accuracy. Enabled session-based context tracking, improving user retention and experience consistency.",
           tech: ["React", "Next.js", "LLM", "Voice API", "Node.js"],
-          link: "#",
+          link: "https://github.com/abdullahdhillu/DentAi.git",
         },
         {
           title: "Wild Oasis — Hotel Booking System",
-          img: "https://placehold.co/600x400/0A0F18/00FF9C?text=Wild+Oasis&font=sourcecodepro",
+          img: "/public/work-item-333.png",
           desc: "Centralized hotel booking system with CRUD room management and real-time tracking.",
           fullDesc:
             "Wild Oasis is a hotel booking system (Sep 2025 – Nov 2025). Built a centralized booking system, reducing manual booking errors by approximately 45%. Implemented CRUD-based room management, improving admin efficiency by around 40%. Developed real-time booking tracking, reducing double-booking conflicts by an estimated 50%. Secured application with authentication and protected routes, improving overall system security.",
           tech: ["React", "Next.js", "PostgreSQL", "Prisma", "Authentication"],
-          link: "#",
+          link: "https://github.com/abdullahdhillu/the-wild-oasis.git",
+        },
+        {
+          title: "CODER — AI Coding Assistant",
+          img: "./public/work-item-3.jpg",
+          desc: "AI-powered coding assistant for code generation, debugging, and software development workflows.",
+          fullDesc:
+            "CODER is an intelligent AI coding assistant built to accelerate software development and enhance programmer productivity. The platform leverages advanced language models to generate code, explain complex programming concepts, identify bugs, suggest optimizations, and assist with debugging across multiple programming languages. Designed as a developer companion, CODER helps streamline the entire development lifecycle, from writing clean code to troubleshooting issues and improving application performance.",
+          tech: [
+            "React.js",
+            "Node.js",
+            "TypeScript",
+            "OpenAI API",
+            "MongoDB",
+            "REST APIs",
+          ],
+          link: "https://github.com/abdullahdhillu/Cursor.git",
         },
         {
           title: "Streamify — Video Collaboration Platform",
-          img: "https://placehold.co/600x400/0A0F18/00FF9C?text=Streamify&font=sourcecodepro",
+          img: "./public/work-item-4.jpg",
           desc: "Full-stack AI video recording and workspace-based collaboration platform.",
           fullDesc:
             "Streamify is an AI video recording and collaboration platform (2026). Developed a full-stack recording platform, reducing video upload latency by approximately 35% through optimized chunk handling. Implemented real-time processing pipelines, improving video readiness time by around 50%. Designed workspace-based collaboration, increasing team productivity and organization. Optimized recording lifecycle management, reducing redundant data transfer and server load by an estimated 30%.",
           tech: ["React", "Next.js", "Node.js", "WebSockets", "Docker"],
-          link: "#",
+          link: "https://github.com/abdullahdhillu/Streamify.git",
         },
         {
-          title: "Mini Search Engine Infrastructure",
-          img: "https://placehold.co/600x400/0A0F18/00FF9C?text=Search+Engine&font=sourcecodepro",
-          desc: "Distributed web crawler and indexing system with semantic re-ranking.",
+          title: "MEET — AI Meeting Assistant",
+          img: "./public/work-item-2.jpg",
+          desc: "AI-powered meeting assistant for scheduling, transcription, summaries, and action items.",
           fullDesc:
-            "Mini Search Engine Core Infrastructure is a distributed web crawler and indexing system (2026). Designed a distributed web crawler using a Master-Worker architecture, improving crawling scalability by approximately 70% across multiple nodes. Implemented a Redis-backed priority queue with tiered crawling, increasing crawl efficiency and high-value page coverage by around 60%. Integrated a semantic re-ranking layer using vector embeddings, enhancing search accuracy and user intent matching by around 35%.",
+            "MEET is an AI-powered meeting assistant designed to streamline collaboration and productivity. The platform enables users to schedule meetings, generate real-time transcriptions, create intelligent summaries, and extract actionable tasks automatically. Built with modern web technologies and AI integrations, it reduces manual note-taking and helps teams focus on meaningful discussions while ensuring important information is never missed.",
           tech: [
+            "React.js",
             "Node.js",
-            "Redis",
-            "Vector Embeddings",
-            "Distributed Systems",
-            "Docker",
+            "Express.js",
+            "MongoDB",
+            "OpenAI API",
+            "TypeScript",
           ],
-          link: "#",
+          link: "https://github.com/abdullahdhillu/zoomer.git",
         },
         {
-          title: "Portfolio Website (This Site!)",
-          img: "https://placehold.co/600x400/0A0F18/00FF9C?text=Portfolio&font=sourcecodepro",
-          desc: "Personal portfolio built with vanilla JS and a matrix-inspired hacker theme.",
+          title: "Voice of Human — AI Voice Companion",
+          img: "./public/work-item-5.jpg",
+          desc: "Real-time AI voice companion with natural conversations and emotional responses.",
           fullDesc:
-            "The very website you are currently viewing! Built from scratch using HTML, CSS, and vanilla JavaScript with a custom client-side router, OOP-based structure, and a distinctive matrix/hacker aesthetic. Features smooth page transitions, interactive effects, and a responsive design showcasing my frontend development skills.",
+            "Voice of Human is an advanced conversational AI platform that enables users to interact naturally through voice and text. The application combines speech-to-text, large language models, and realistic text-to-speech synthesis to create human-like conversations with minimal latency. It features session tracking, user progression systems, and intelligent voice interactions, delivering an engaging and personalized AI companion experience.",
           tech: [
-            "HTML5",
-            "CSS3",
-            "JavaScript (ES6+)",
-            "TailwindCSS",
-            "SPA Design",
+            "React.js",
+            "Node.js",
+            "MongoDB",
+            "OpenAI API",
+            "ElevenLabs",
+            "WebSockets",
           ],
-          link: "#",
+          link: "https://github.com/abdullahdhillu/Cursor.git",
         },
       ];
 
@@ -2350,7 +2442,8 @@
         init() {
           if (this.ctx) return;
           try {
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            const AudioContext =
+              window.AudioContext || window.webkitAudioContext;
             this.ctx = new AudioContext();
           } catch (e) {
             console.warn("Web Audio API not supported", e);
@@ -2361,7 +2454,7 @@
           this.enabled = force !== undefined ? force : !this.enabled;
           if (this.enabled) {
             this.init();
-            if (this.ctx && this.ctx.state === 'suspended') {
+            if (this.ctx && this.ctx.state === "suspended") {
               this.ctx.resume();
             }
           }
@@ -2376,12 +2469,15 @@
             osc.connect(gain);
             gain.connect(this.ctx.destination);
 
-            osc.type = 'sine';
+            osc.type = "sine";
             const pitch = 800 + Math.random() * 400;
             osc.frequency.setValueAtTime(pitch, this.ctx.currentTime);
 
             gain.gain.setValueAtTime(0.015, this.ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.05);
+            gain.gain.exponentialRampToValueAtTime(
+              0.0001,
+              this.ctx.currentTime + 0.05,
+            );
 
             osc.start(this.ctx.currentTime);
             osc.stop(this.ctx.currentTime + 0.05);
@@ -2396,11 +2492,14 @@
             osc.connect(gain);
             gain.connect(this.ctx.destination);
 
-            osc.type = 'triangle';
+            osc.type = "triangle";
             osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
 
             gain.gain.setValueAtTime(0.08, this.ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + duration);
+            gain.gain.exponentialRampToValueAtTime(
+              0.0001,
+              this.ctx.currentTime + duration,
+            );
 
             osc.start(this.ctx.currentTime);
             osc.stop(this.ctx.currentTime + duration);
@@ -2416,13 +2515,13 @@
               const gain = this.ctx.createGain();
               osc.connect(gain);
               gain.connect(this.ctx.destination);
-              
-              osc.type = 'sawtooth';
+
+              osc.type = "sawtooth";
               osc.frequency.setValueAtTime(120, time);
-              
+
               gain.gain.setValueAtTime(0.08, time);
               gain.gain.exponentialRampToValueAtTime(0.0001, time + 0.1);
-              
+
               osc.start(time);
               osc.stop(time + 0.1);
             });
@@ -2441,7 +2540,7 @@
               osc.connect(gain);
               gain.connect(this.ctx.destination);
 
-              osc.type = 'sine';
+              osc.type = "sine";
               osc.frequency.setValueAtTime(freq, time);
 
               gain.gain.setValueAtTime(0.06, time);
@@ -2461,13 +2560,22 @@
             osc.connect(gain);
             gain.connect(this.ctx.destination);
 
-            osc.type = 'sawtooth';
+            osc.type = "sawtooth";
             osc.frequency.setValueAtTime(600, this.ctx.currentTime);
-            osc.frequency.linearRampToValueAtTime(900, this.ctx.currentTime + 0.4);
-            osc.frequency.linearRampToValueAtTime(600, this.ctx.currentTime + 0.8);
+            osc.frequency.linearRampToValueAtTime(
+              900,
+              this.ctx.currentTime + 0.4,
+            );
+            osc.frequency.linearRampToValueAtTime(
+              600,
+              this.ctx.currentTime + 0.8,
+            );
 
             gain.gain.setValueAtTime(0.08, this.ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.8);
+            gain.gain.exponentialRampToValueAtTime(
+              0.0001,
+              this.ctx.currentTime + 0.8,
+            );
 
             osc.start(this.ctx.currentTime);
             osc.stop(this.ctx.currentTime + 0.8);
@@ -2482,12 +2590,18 @@
             osc.connect(gain);
             gain.connect(this.ctx.destination);
 
-            osc.type = 'sine';
+            osc.type = "sine";
             osc.frequency.setValueAtTime(1200, this.ctx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(80, this.ctx.currentTime + 1.2);
+            osc.frequency.exponentialRampToValueAtTime(
+              80,
+              this.ctx.currentTime + 1.2,
+            );
 
             gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 1.2);
+            gain.gain.exponentialRampToValueAtTime(
+              0.0001,
+              this.ctx.currentTime + 1.2,
+            );
 
             osc.start(this.ctx.currentTime);
             osc.stop(this.ctx.currentTime + 1.2);
@@ -2614,8 +2728,8 @@
           this.boundKeyDown = this.handleKeyDown.bind(this);
           this.boundInput = this.updateInputDisplay.bind(this);
           this.boundFocusClick = this.focusInput.bind(this);
-          
-          this.terminalState = 'normal'; // 'normal', 'password', 'game'
+
+          this.terminalState = "normal"; // 'normal', 'password', 'game'
           this.gameState = null;
         }
 
@@ -2659,8 +2773,10 @@
 
         updateInputDisplay() {
           if (this.inputDisplayEl && this.inputEl) {
-            if (this.terminalState === 'password') {
-              this.inputDisplayEl.textContent = '*'.repeat(this.inputEl.value.length);
+            if (this.terminalState === "password") {
+              this.inputDisplayEl.textContent = "*".repeat(
+                this.inputEl.value.length,
+              );
             } else {
               this.inputDisplayEl.textContent = this.inputEl.value;
             }
@@ -2735,16 +2851,20 @@
             return;
           }
 
-          if (e.key.length === 1 || e.key === "Backspace" || e.key === "Delete") {
+          if (
+            e.key.length === 1 ||
+            e.key === "Backspace" ||
+            e.key === "Delete"
+          ) {
             audioInstance.playTick();
           }
 
           if (e.key === "Enter") {
             e.preventDefault();
             const cmd = this.inputEl.value.trim();
-            if (this.terminalState === 'password') {
+            if (this.terminalState === "password") {
               this.addLine(
-                `<span class="terminal-prompt-text">${this.prompt}</span>${'*'.repeat(cmd.length)}`,
+                `<span class="terminal-prompt-text">${this.prompt}</span>${"*".repeat(cmd.length)}`,
                 "command-echo",
               );
             } else {
@@ -2756,11 +2876,11 @@
             this.inputEl.value = "";
             this.updateInputDisplay();
 
-            if (this.terminalState === 'password') {
+            if (this.terminalState === "password") {
               this.processPassword(cmd);
               return;
             }
-            if (this.terminalState === 'game') {
+            if (this.terminalState === "game") {
               this.processGameInput(cmd);
               return;
             }
@@ -3233,12 +3353,12 @@
 
         processPassword(password) {
           this.isTyping = true;
-          if (password === 'matrix') {
-            this.username = 'root';
+          if (password === "matrix") {
+            this.username = "root";
             this.prompt = `[${this.username}@${this.hostname}]# `;
             if (this.promptDisplayEl) {
               this.promptDisplayEl.textContent = this.prompt;
-              this.promptDisplayEl.style.color = 'rgb(239, 68, 68)';
+              this.promptDisplayEl.style.color = "rgb(239, 68, 68)";
             }
             const accessEl = document.getElementById("hud-access");
             if (accessEl) {
@@ -3246,77 +3366,98 @@
               accessEl.style.color = "rgb(239, 68, 68)";
             }
             this.addLine("[OK] Access granted. Welcome, root user.", "success");
-            this.addLine("[WARNING] High privilege level. Execute with caution.", "error");
+            this.addLine(
+              "[WARNING] High privilege level. Execute with caution.",
+              "error",
+            );
             audioInstance.playSucceed();
           } else {
-            this.addLine("sudo: 1 incorrect password attempt. Permission denied.", "error");
+            this.addLine(
+              "sudo: 1 incorrect password attempt. Permission denied.",
+              "error",
+            );
             audioInstance.playDeny();
           }
-          this.terminalState = 'normal';
+          this.terminalState = "normal";
           this.isTyping = false;
           this.focusInput();
         }
 
         processGameInput(input) {
-          if (input.toLowerCase() === 'exit' || input.toLowerCase() === 'abort') {
+          if (
+            input.toLowerCase() === "exit" ||
+            input.toLowerCase() === "abort"
+          ) {
             this.addLine("Game aborted.", "muted");
-            this.terminalState = 'normal';
+            this.terminalState = "normal";
             this.focusInput();
             return;
           }
 
           const guess = parseInt(input, 10);
           if (isNaN(guess)) {
-            this.addLine("Invalid input. Please enter a port number or 'exit'.", "error");
+            this.addLine(
+              "Invalid input. Please enter a port number or 'exit'.",
+              "error",
+            );
             audioInstance.playDeny();
             return;
           }
 
           this.gameState.attempts++;
           if (guess === this.gameState.targetPort) {
-            this.addLine(`[SUCCESS] Port cracked in ${this.gameState.attempts} attempts!`, "success");
+            this.addLine(
+              `[SUCCESS] Port cracked in ${this.gameState.attempts} attempts!`,
+              "success",
+            );
             this.addLine("[INFO] Recovering core system archives...", "system");
-            this.addLine("[INFO] Decrypted hidden profile token: ABDULLAH_ROOT_2026", "success");
+            this.addLine(
+              "[INFO] Decrypted hidden profile token: ABDULLAH_ROOT_2026",
+              "success",
+            );
             audioInstance.playSucceed();
-            this.terminalState = 'normal';
+            this.terminalState = "normal";
           } else if (guess < this.gameState.targetPort) {
-            this.addLine(`Port ${guess} is closed. Probe returns: value too LOW.`, "muted");
+            this.addLine(
+              `Port ${guess} is closed. Probe returns: value too LOW.`,
+              "muted",
+            );
             audioInstance.playBeep(400, 0.05);
           } else {
-            this.addLine(`Port ${guess} is closed. Probe returns: value too HIGH.`, "muted");
+            this.addLine(
+              `Port ${guess} is closed. Probe returns: value too HIGH.`,
+              "muted",
+            );
             audioInstance.playBeep(400, 0.05);
           }
           this.focusInput();
         }
 
         cmdTheme(args) {
-          const themes = ['matrix', 'amber', 'blue', 'red', 'purple'];
+          const themes = ["matrix", "amber", "blue", "red", "purple"];
           const target = args[0]?.toLowerCase();
           if (!target) {
-            return [
-              "Usage: theme <name>",
-              `Themes: ${themes.join(", ")}`
-            ];
+            return ["Usage: theme <name>", `Themes: ${themes.join(", ")}`];
           }
           if (!themes.includes(target)) {
             return [
               `Theme '${target}' not found.`,
-              `Available: ${themes.join(", ")}`
+              `Available: ${themes.join(", ")}`,
             ];
           }
           this.app.setTheme(target);
           return [
             `// Setting system accent palette to: ${target.toUpperCase()}`,
-            "// Theme change successful."
+            "// Theme change successful.",
           ];
         }
 
         cmdSelfDestruct() {
-          if (this.username !== 'root') {
+          if (this.username !== "root") {
             audioInstance.playDeny();
             return [
               "Permission denied: Root privilege required.",
-              "Run 'sudo' first to authenticate."
+              "Run 'sudo' first to authenticate.",
             ];
           }
           setTimeout(() => {
@@ -3324,12 +3465,14 @@
           }, 600);
           return [
             "// WARNING: CRITICAL MELTDOWN SEQUENCE INITIATED",
-            "// DISPATCHING SYSTEM RESET COMMANDS..."
+            "// DISPATCHING SYSTEM RESET COMMANDS...",
           ];
         }
 
         cmdCowsay(args) {
-          const text = args.length ? args.join(" ") : "Moo! Type something after cowsay.";
+          const text = args.length
+            ? args.join(" ")
+            : "Moo! Type something after cowsay.";
           const border = "-".repeat(text.length + 2);
           return [
             `  ${border}`,
@@ -3339,7 +3482,7 @@
             "          \\  (oo)\\_______",
             "             (__)\\       )\\/\\",
             "                 ||----w |",
-            "                 ||     ||"
+            "                 ||     ||",
           ];
         }
 
@@ -3353,19 +3496,20 @@
             "↳ Port 80 (HTTP) ........ OPEN (Vanilla Server)",
             "↳ Port 443 (HTTPS) ...... OPEN (SSL active)",
             "↳ Port 8080 (DEV) ....... OPEN (React devserver)",
-            "Scan complete: 4 open ports identified."
+            "Scan complete: 4 open ports identified.",
           ];
         }
 
         cmdMatrix(args) {
-          if (args[0] === '-o' && args[1]) {
+          if (args[0] === "-o" && args[1]) {
             const op = parseFloat(args[1]);
-            if (isNaN(op) || op < 0 || op > 1) return ["Usage: matrix -o <0.0-1.0>"];
+            if (isNaN(op) || op < 0 || op > 1)
+              return ["Usage: matrix -o <0.0-1.0>"];
             const canvases = document.querySelectorAll("canvas");
-            canvases.forEach(c => c.style.opacity = op);
+            canvases.forEach((c) => (c.style.opacity = op));
             return [`Matrix rain opacity set to ${op}`];
           }
-          if (args[0] === '-c' && args[1]) {
+          if (args[0] === "-c" && args[1]) {
             const chars = args[1];
             if (this.app.matrixRainInstance) {
               this.app.matrixRainInstance.characters = chars;
@@ -3375,16 +3519,16 @@
           return [
             "Matrix Rain settings:",
             "  matrix -o <opacity>  Set canvas opacity (0.0 to 1.0)",
-            "  matrix -c <string>   Set falling characters pool"
+            "  matrix -c <string>   Set falling characters pool",
           ];
         }
 
         cmdPlay() {
           const target = Math.floor(Math.random() * 990) + 10;
-          this.terminalState = 'game';
+          this.terminalState = "game";
           this.gameState = {
             targetPort: target,
-            attempts: 0
+            attempts: 0,
           };
           audioInstance.playBeep(800, 0.15);
           return [
@@ -3392,7 +3536,7 @@
             "Target host: 172.16.254.14",
             "Scanning ports...",
             "Hint: The open gateway port is between 10 and 1000.",
-            "Type your guess (or 'exit' to quit):"
+            "Type your guess (or 'exit' to quit):",
           ];
         }
       }
@@ -3443,7 +3587,7 @@
           this.activeCounters = [];
 
           // Hacker Theme HUD state variables
-          this.currentTheme = 'matrix';
+          this.currentTheme = "matrix";
           this.audioEnabled = false;
           this.idsLogsInterval = null;
           this.decryptInterval = null;
@@ -3498,7 +3642,7 @@
             this.scrollToTopBtn.addEventListener("click", () =>
               window.scrollTo({ top: 0, behavior: "smooth" }),
             );
-          
+
           this.setupHUDListeners();
         }
 
@@ -3511,7 +3655,9 @@
             hudToggle.addEventListener("click", () => {
               hud.classList.toggle("collapsed");
               const isCollapsed = hud.classList.contains("collapsed");
-              hudToggle.innerHTML = isCollapsed ? '<i class="fas fa-chevron-up"></i>' : '<i class="fas fa-chevron-down"></i>';
+              hudToggle.innerHTML = isCollapsed
+                ? '<i class="fas fa-chevron-up"></i>'
+                : '<i class="fas fa-chevron-down"></i>';
               audioInstance.playBeep(900, 0.05);
             });
           }
@@ -3544,8 +3690,10 @@
           this.audioEnabled = enabled;
           const hudAudioBtn = document.getElementById("hud-audio-btn");
           if (hudAudioBtn) {
-            hudAudioBtn.innerHTML = enabled ? '<i class="fas fa-volume-up mr-1"></i>ON' : '<i class="fas fa-volume-mute mr-1"></i>OFF';
-            hudAudioBtn.style.color = enabled ? 'var(--accent-color)' : '';
+            hudAudioBtn.innerHTML = enabled
+              ? '<i class="fas fa-volume-up mr-1"></i>ON'
+              : '<i class="fas fa-volume-mute mr-1"></i>OFF';
+            hudAudioBtn.style.color = enabled ? "var(--accent-color)" : "";
           }
           if (enabled) {
             audioInstance.playSucceed();
@@ -3553,28 +3701,28 @@
         }
 
         cycleTheme() {
-          const themes = ['matrix', 'amber', 'blue', 'red', 'purple'];
+          const themes = ["matrix", "amber", "blue", "red", "purple"];
           let currentIndex = themes.indexOf(this.currentTheme);
           let nextIndex = (currentIndex + 1) % themes.length;
           this.setTheme(themes[nextIndex]);
         }
 
         setTheme(themeName) {
-          const themes = ['matrix', 'amber', 'blue', 'red', 'purple'];
-          themes.forEach(t => document.body.classList.remove(`theme-${t}`));
-          
+          const themes = ["matrix", "amber", "blue", "red", "purple"];
+          themes.forEach((t) => document.body.classList.remove(`theme-${t}`));
+
           this.currentTheme = themeName;
-          if (themeName !== 'matrix') {
+          if (themeName !== "matrix") {
             document.body.classList.add(`theme-${themeName}`);
           }
-          
+
           const hudThemeBtn = document.getElementById("hud-theme-btn");
           const themeNames = {
-            'matrix': 'Matrix',
-            'amber': 'Amber CRT',
-            'blue': 'Sci-Fi',
-            'red': 'Red Alert',
-            'purple': 'Cyber'
+            matrix: "Matrix",
+            amber: "Amber CRT",
+            blue: "Sci-Fi",
+            red: "Red Alert",
+            purple: "Cyber",
           };
           if (hudThemeBtn) {
             hudThemeBtn.textContent = themeNames[themeName];
@@ -3595,37 +3743,44 @@
             `[${new Date().toLocaleTimeString()}] // Threat Monitor database synced.`,
             `[${new Date().toLocaleTimeString()}] // Secure gateway tunnel open on interface eth0.`,
             `[${new Date().toLocaleTimeString()}] // Port scanning defense protocols: LOADED.`,
-            `[${new Date().toLocaleTimeString()}] // Waiting for signals...`
+            `[${new Date().toLocaleTimeString()}] // Waiting for signals...`,
           ];
 
-          initialLogs.forEach(log => {
+          initialLogs.forEach((log) => {
             const line = document.createElement("div");
             line.textContent = log;
             container.appendChild(line);
           });
 
           const logTemplates = [
-            () => `[${new Date().toLocaleTimeString()}] [INFO] Packet routing: ${this.randomIP()} -> ${this.randomIP()} (56 bytes)`,
-            () => `[${new Date().toLocaleTimeString()}] [WARN] Potential scan on port ${this.randomPort()} from ${this.randomIP()}`,
-            () => `[${new Date().toLocaleTimeString()}] [BLOCKED] Firewall dropped packet from ${this.randomIP()} on port ${this.randomPort()}`,
-            () => `[${new Date().toLocaleTimeString()}] [OK] Security check passed for signature hash: MD5_${Math.random().toString(36).substring(7).toUpperCase()}`,
-            () => `[${new Date().toLocaleTimeString()}] [ALERT] ICMP echo request ping burst detected from ${this.randomIP()}`,
-            () => `[${new Date().toLocaleTimeString()}] [SECURE] SSH root login attempt blocked from ${this.randomIP()}`
+            () =>
+              `[${new Date().toLocaleTimeString()}] [INFO] Packet routing: ${this.randomIP()} -> ${this.randomIP()} (56 bytes)`,
+            () =>
+              `[${new Date().toLocaleTimeString()}] [WARN] Potential scan on port ${this.randomPort()} from ${this.randomIP()}`,
+            () =>
+              `[${new Date().toLocaleTimeString()}] [BLOCKED] Firewall dropped packet from ${this.randomIP()} on port ${this.randomPort()}`,
+            () =>
+              `[${new Date().toLocaleTimeString()}] [OK] Security check passed for signature hash: MD5_${Math.random().toString(36).substring(7).toUpperCase()}`,
+            () =>
+              `[${new Date().toLocaleTimeString()}] [ALERT] ICMP echo request ping burst detected from ${this.randomIP()}`,
+            () =>
+              `[${new Date().toLocaleTimeString()}] [SECURE] SSH root login attempt blocked from ${this.randomIP()}`,
           ];
 
           this.idsLogsInterval = setInterval(() => {
             const container = document.getElementById("ids-logs-container");
             if (!container) return;
 
-            const randomTemplate = logTemplates[Math.floor(Math.random() * logTemplates.length)];
+            const randomTemplate =
+              logTemplates[Math.floor(Math.random() * logTemplates.length)];
             const line = document.createElement("div");
             line.textContent = randomTemplate();
             container.appendChild(line);
-            
+
             while (container.childNodes.length > 50) {
               container.removeChild(container.firstChild);
             }
-            
+
             container.scrollTop = container.scrollHeight;
             audioInstance.playTick();
           }, 3500);
@@ -3639,7 +3794,7 @@
         }
 
         randomIP() {
-          return `${Math.floor(Math.random()*223)+1}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*254)+1}`;
+          return `${Math.floor(Math.random() * 223) + 1}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 254) + 1}`;
         }
 
         randomPort() {
@@ -3653,24 +3808,29 @@
           if (!grid) return;
 
           grid.innerHTML = "";
-          const totalSlots = 42; 
+          const totalSlots = 42;
           const charPool = "0123456789ABCDEF!@#$%^&*()_+{}[]|";
           for (let i = 0; i < totalSlots; i++) {
             const span = document.createElement("span");
             span.className = "text-center text-gray-600 font-mono";
-            span.textContent = charPool[Math.floor(Math.random() * charPool.length)];
+            span.textContent =
+              charPool[Math.floor(Math.random() * charPool.length)];
             grid.appendChild(span);
           }
 
           this.decryptInterval = setInterval(() => {
             const spans = grid.querySelectorAll("span");
-            spans.forEach(span => {
+            spans.forEach((span) => {
               if (Math.random() > 0.7) {
-                span.textContent = charPool[Math.floor(Math.random() * charPool.length)];
+                span.textContent =
+                  charPool[Math.floor(Math.random() * charPool.length)];
                 if (span.classList.contains("text-[var(--accent-color)]")) {
                   // Keep resolved
                 } else {
-                  span.className = Math.random() > 0.5 ? "text-gray-500 font-mono" : "text-gray-700 font-mono";
+                  span.className =
+                    Math.random() > 0.5
+                      ? "text-gray-500 font-mono"
+                      : "text-gray-700 font-mono";
                 }
               }
             });
@@ -3687,26 +3847,31 @@
               startBtn.classList.add("hidden");
               if (overlay) overlay.style.opacity = "0.15";
               audioInstance.playBeep(600, 0.1);
-              
+
               let progress = 0;
               const decryptStep = () => {
                 if (progress >= 100) {
                   progress = 100;
                   if (percentText) percentText.textContent = "100%";
                   if (progressBar) progressBar.style.width = "100%";
-                  if (overlay) overlay.innerHTML = '<span class="text-[var(--accent-color)] text-sm font-bold">STATUS: UNLOCKED</span><span class="text-xs text-gray-400">RESUME.DAT DECRYPTED</span>';
+                  if (overlay)
+                    overlay.innerHTML =
+                      '<span class="text-[var(--accent-color)] text-sm font-bold">STATUS: UNLOCKED</span><span class="text-xs text-gray-400">RESUME.DAT DECRYPTED</span>';
                   if (downloadBtn) {
                     downloadBtn.classList.remove("hidden");
                     const mockResumeContent = `MUHAMMAD ABDULLAH\nFull Stack Developer | Sacramento, CA\nEmail: abdullahdhillu99@gmail.com | Phone: (+1) 424-387-7518\n\n[RESUME DATA RECOVERED SUCCESSFULLY]\n\nLink to Profile: https://linkedin.com/in/dhillon99\nThank you for decrypting my resume!`;
-                    const blob = new Blob([mockResumeContent], { type: 'text/plain' });
+                    const blob = new Blob([mockResumeContent], {
+                      type: "text/plain",
+                    });
                     downloadBtn.href = URL.createObjectURL(blob);
                     downloadBtn.download = "Muhammad_Abdullah_Resume.txt";
                   }
                   audioInstance.playSucceed();
-                  
+
                   const spans = grid.querySelectorAll("span");
-                  spans.forEach(s => {
-                    s.className = "text-[var(--accent-color)] font-mono font-bold";
+                  spans.forEach((s) => {
+                    s.className =
+                      "text-[var(--accent-color)] font-mono font-bold";
                   });
                   return;
                 }
@@ -3716,12 +3881,15 @@
 
                 if (percentText) percentText.textContent = `${progress}%`;
                 if (progressBar) progressBar.style.width = `${progress}%`;
-                
+
                 const spans = grid.querySelectorAll("span");
-                const countToResolve = Math.floor((progress / 100) * spans.length);
+                const countToResolve = Math.floor(
+                  (progress / 100) * spans.length,
+                );
                 for (let i = 0; i < countToResolve; i++) {
                   if (spans[i]) {
-                    spans[i].className = "text-[var(--accent-color)] font-mono font-bold";
+                    spans[i].className =
+                      "text-[var(--accent-color)] font-mono font-bold";
                   }
                 }
 
@@ -3746,7 +3914,7 @@
           this.isSelfDestructing = true;
 
           window.location.hash = "#home";
-          
+
           audioInstance.playBeep(440, 0.5);
 
           const hud = document.getElementById("system-hud");
@@ -3756,7 +3924,8 @@
 
           const warningOverlay = document.createElement("div");
           warningOverlay.id = "self-destruct-overlay";
-          warningOverlay.className = "fixed inset-0 bg-black bg-opacity-75 z-[10004] flex flex-col justify-center items-center font-mono text-red-500 text-center p-6";
+          warningOverlay.className =
+            "fixed inset-0 bg-black bg-opacity-75 z-[10004] flex flex-col justify-center items-center font-mono text-red-500 text-center p-6";
           warningOverlay.innerHTML = `
             <div class="border-4 border-red-600 p-8 rounded-lg max-w-lg bg-black bg-opacity-90 shadow-[0_0_50px_rgba(220,38,38,0.6)] animate-pulse">
                 <i class="fas fa-exclamation-triangle text-6xl mb-4 text-red-600"></i>
@@ -3773,13 +3942,13 @@
             count--;
             const countEl = document.getElementById("destruct-countdown");
             if (countEl) countEl.textContent = count;
-            
+
             if (count > 0) {
               audioInstance.playAlarm();
             } else {
               clearInterval(interval);
               audioInstance.playReboot();
-              
+
               warningOverlay.innerHTML = "";
               warningOverlay.className = "fixed inset-0 bg-black z-[10005]";
               document.body.classList.remove("core-meltdown");
@@ -3788,7 +3957,7 @@
                 document.body.removeChild(warningOverlay);
                 window.location.hash = "#terminal";
                 this.isSelfDestructing = false;
-                
+
                 setTimeout(() => {
                   if (this.terminalInstance) {
                     this.terminalInstance.clearOutput();
